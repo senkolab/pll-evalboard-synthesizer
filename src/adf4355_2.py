@@ -84,8 +84,6 @@ class ADF4355:
     resync_clock = 0
 
     # constructor
-    def __init__:
-        pass
 
     # sets a frequency
     def set_freq( freq ):
