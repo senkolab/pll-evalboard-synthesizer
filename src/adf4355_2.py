@@ -1,5 +1,9 @@
 ################################################################################
 #   driver for Analog Devices ADF-4355-2 PLL
+#
+#   Written by Rich Rademacher, 
+#           1/2/2018 
+#           University of Waterloo/IQC
 ################################################################################
 
 import time
@@ -7,11 +11,9 @@ import spidev
 
 class ADF4355:
     # constructor
-    def __init__(self, name):
-        self.glob_reg1 = 0
-        self.glob_reg2 = 0
-        self.glob_reg3 = 0
-
+    def __init__(self, fref=122.88e6):
+        self.fref = fref * 1.0  # force float
+        
         # register 0
         self.autocal = 0
         self.prescaler = 0
@@ -88,7 +90,18 @@ class ADF4355:
 
     # sets a frequency
     def set_freq( freq ):
+        D = reference_doubler
+        R = 
+        # from ADF4355-2 dadasheet rev C pg 13
+        f_pfd = fref * (1 + D) / (R * (1 + T))
+        f_vco = freq * 
+        N = 
+
+# gets current frequency
+    def get_freq( ):
         pass
+
+
 
     # sets powerdown
     def set_powerdown( value ):
@@ -147,7 +160,7 @@ class ADF4355:
         reg = (byte_array[3] << 24) | (byte_array[2] << 16) | (byte_array[1] << 8) | (byte_array)
 
         # get control bits as register id
-        regnum = reg & 0x3
+        regnum = reg & 0xf
 
         if( regnum == 0 ):
             autocal = (reg >> 21) & 1 
