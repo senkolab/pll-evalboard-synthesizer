@@ -6,84 +6,85 @@ import time
 import spidev
 
 class ADF4355:
-    glob_reg1 = 0
-    glob_reg2 = 0
-    glob_reg3 = 0
-
-    # register 0
-    autocal = 0
-    prescaler = 0
-    n = 0   
-
-    # register 1
-    f = 0
-
-    # register 2
-    faux = 0
-    m = 0
-
-    # register 3
-    sd_load_preset = 0
-    phase_resync = 0
-    phase_adjust = 0
-    p = 0
-
-    # register 4
-    muxout = 0
-    reference_doubler = 0
-    rdiv2 = 0
-    r = 0
-    double_buff = 0
-    current = 0
-    ref_mode = 0
-    mux_logic = 0
-    pd_polarity = 0
-    pd = 0
-    cp_tristate = 0
-    counter_reset = 0
-
-    #register 5
-    # all reserved
-
-    # register 6
-    gated_bleed = 0
-    nevgative_bleed = 0
-    feedback_select = 0
-    rf_divider_select = 0
-    cp_bleed_current = 0
-    mtld = 0
-    auxrf_output_enable = 0
-    auxrf_output_power = 0
-    rf_output_power = 0
-    
-    # register 7
-    le_sync = 0
-    ld_cycle_count = 0
-    lol_mode = 0
-    frac_n_ld_precision = 0
-    ldo_mode = 0
-
-    # register 8
-    # all reserved
-    
-    # register 9
-    vco_band_division = 0
-    timeout = 0
-    autolevel_timeout = 0
-    synth_timeout = 0
-
-    # register 10
-    adc_clk_div = 0
-    adc_conversion = 0
-    adc_enable = 0
-
-    # register 11
-    # all reserved
-
-    # register 12
-    resync_clock = 0
-
     # constructor
+    def __init__(self, name):
+        self.glob_reg1 = 0
+        self.glob_reg2 = 0
+        self.glob_reg3 = 0
+
+        # register 0
+        self.autocal = 0
+        self.prescaler = 0
+        self.n = 0   
+
+        # register 1
+        self.f = 0
+
+        # register 2
+        self.faux = 0
+        self.m = 0
+
+        # register 3
+        self.sd_load_preset = 0
+        self.phase_resync = 0
+        self.phase_adjust = 0
+        self.p = 0
+
+        # register 4
+        self.muxout = 0
+        self.reference_doubler = 0
+        self.rdiv2 = 0
+        self.r = 0
+        self.double_buff = 0
+        self.current = 0
+        self.ref_mode = 0
+        self.mux_logic = 0
+        self.pd_polarity = 0
+        self.pd = 0
+        self.cp_tristate = 0
+        self.counter_reset = 0
+
+        #register 5
+        # all reserved
+
+        # register 6
+        self.gated_bleed = 0
+        self.nevgative_bleed = 0
+        self.feedback_select = 0
+        self.rf_divider_select = 0
+        self.cp_bleed_current = 0
+        self.mtld = 0
+        self.auxrf_output_enable = 0
+        self.auxrf_output_power = 0
+        self.rf_output_power = 0
+        
+        # register 7
+        self.le_sync = 0
+        self.ld_cycle_count = 0
+        self.lol_mode = 0
+        self.frac_n_ld_precision = 0
+        self.ldo_mode = 0
+
+        # register 8
+        # all reserved
+        
+        # register 9
+        self.vco_band_division = 0
+        self.timeout = 0
+        self.autolevel_timeout = 0
+        self.synth_timeout = 0
+
+        # register 10
+        self.adc_clk_div = 0
+        self.adc_conversion = 0
+        self.adc_enable = 0
+
+        # register 11
+        # all reserved
+
+        # register 12
+        self.resync_clock = 0
+
 
     # sets a frequency
     def set_freq( freq ):
@@ -125,7 +126,7 @@ class ADF4355:
         if( regnum == 8 ):
             reg = (regnum)
         if( regnum == 9 ):
-            reg = ((vco_band_division & 0xff) << 24) | ((timeout 0x3ff) << 14) | \
+            reg = ((vco_band_division & 0xff) << 24) | ((timeout & 0x3ff) << 14)  \
                   | ((autolevel_timeout & 0x1f) << 9) | ((synth_timeout & 0x1f) << 4) | (regnum)
         if( regnum == 10 ):
             reg = ((adc_clk_div & 0xff) << 6) | ((adc_conversion & 1) << 5) | ((adc_enable & 1) << 4) \
@@ -194,7 +195,7 @@ class ADF4355:
             ldo_mode = (reg >> 4) & 1 
         if( regnum == 9 ):
             vco_band_division = (reg >> 24) & 0xff 
-            ((timeout 0x3ff) << 14) 
+            timeout = (reg >> 14) & 0x3ff
             autolevel_timeout = (reg >> 9) & 0x1f 
             synth_timeout = (reg >> 4) & 0x1f 
         if( regnum == 10 ):
