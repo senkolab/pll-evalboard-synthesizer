@@ -13,5 +13,20 @@ import adf41020
 #
 # begin main program
 #
-spi = spidev.Spi()
+mw_spi = spidev.SpiDev()
+mw_spi.open(0,0)
+mw_spi.cshigh = False 
+mw_spi.max_speed_hz = 100000
+mw_pll = adf41020.ADF41020()
+
+print 'Programming ADF41020 to %g GHz' % (mw_pll.set_freq(14.7e9) / 1e9)
+print 'R = %02x%02x%02x' % tuple(mw_pll.encode_register(0))
+print 'N = %02x%02x%02x' % tuple(mw_pll.encode_register(1))
+print 'F = %02x%02x%02x' % tuple(mw_pll.encode_register(2))
+
+while True:
+    mw_pll.program_reg(0, mw_spi)
+    mw_pll.program_reg(1, mw_spi)
+    mw_pll.program_reg(2, mw_spi)
+    time.sleep(0.5)
 
