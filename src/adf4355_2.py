@@ -91,11 +91,11 @@ class ADF4355:
     # sets a frequency
     def set_freq( freq ):
         D = reference_doubler
-        R = 
+        R = 1.0 # fixme
         # from ADF4355-2 dadasheet rev C pg 13
         f_pfd = fref * (1 + D) / (R * (1 + T))
         f_vco = freq * 
-        N = 
+        N = 1.0 #fixme
 
 # gets current frequency
     def get_freq( ):
