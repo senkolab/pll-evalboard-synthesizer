@@ -31,7 +31,7 @@ class ADF41020:
         self.fastlock_mode = 0
         self.fastlock_enable = 0
         self.cp_tristate = 0
-        self.pd_polarity = 0    # eval board default
+        self.pd_polarity = 1    # eval board default
         self.muxout = 0
         self.powerdown1 = 0
         self.counter_reset = 0

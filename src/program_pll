@@ -3,4 +3,5 @@
 #
 # Programs a PLL chip
 echo "Starting PLL programmer"
-exec python /home/pi/pll-evalboard-synthesizer/src/pll_program.py || exit 1
+exec python /home/pi/pll-evalboard-synthesizer/src/pll_program.py &
+
