@@ -57,7 +57,7 @@ class ADF4355:
         self.negative_bleed = 1         # enabled 
         self.feedback_select = 1        # fundamental
         self.rf_divider_select = 2      # eval board default: div-by-4
-        self.cp_bleed_current = 9       # 9x3.75uA = 33.75uA
+        self.cp_bleed_current = 12      # 12x3.75uA = 45uA
         self.mtld = 0                   # disabled
         self.auxrf_output_enable = 1    # enabled
         self.auxrf_output_power = 1     # eval board default -1dBm
@@ -75,13 +75,13 @@ class ADF4355:
         # all reserved
         
         # register 9
-        self.vco_band_division = 11     # eval board autoset
+        self.vco_band_division = 26     # eval board autoset
         self.timeout = 103              # eval board autoset
         self.autolevel_timeout = 30     # eval board autoset
         self.synth_timeout = 12         # eval board autoset
 
         # register 10
-        self.adc_clk_div = 78           # eval board autoset
+        self.adc_clk_div = 154          # eval board autoset
         self.adc_conversion = 1         # eval board default: enabled
         self.adc_enable = 1             # eval board default: enabled
 
@@ -89,14 +89,14 @@ class ADF4355:
         # all reserved
 
         # register 12
-        self.resync_clock = 0
+        self.resync_clock = 1
 
 
     # get the ouptut divider ratio
     #   ref adf4355-2 datasheet page 25
     def get_output_divider(self) :
         T = self.rf_divider_select
-        if(T < 6) :
+        if(T <= 7) :
             return (1 << T)     # equiv 2^T
         else :
             return 1
@@ -107,15 +107,19 @@ class ADF4355:
         D = self.reference_doubler
         R = self.r
         T = self.rdiv2
+
+        # div_out forces VCO to 3400 - 6800 MHz
+        self.rf_divider_select = int( math.ceil(math.log(3400e6 / freq, 2)) )
         div_out = self.get_output_divider()
 
-        # from ADF4355-2 dadasheet rev C pg 13
+        # from ADF4355-2 datasheet rev C pg 13
         f_pfd = self.fref * (1 + D) / (R * (1 + T))
         f_vco = freq * div_out
         N = f_vco / f_pfd
 
         fract_N, int_N = math.modf(N)
-        print 'fref=%g   freq=%g   pfd=%g   vco=%g   N=%g   int_N=%g   frac_N=%g' % (self.fref, freq, f_pfd, f_vco, N, int_N, fract_N)
+        print 'fref=%g   freq=%g   div=%d   pfd=%g   vco=%g   N=%g   int_N=%g   frac_N=%g   rf_div_sel=%d' \
+                % (self.fref, freq, div_out, f_pfd, f_vco, N, int_N, fract_N, self.rf_divider_select)
 
         # ignore optimization - just use frac2=0 for simplicity
         # frac1 = math.floor(fract_N * self.mod1)
@@ -130,10 +134,10 @@ class ADF4355:
     #
     # gets current frequency
     def get_freq( self ):
-        return self.fref * (1+self.reference_doubler) / (self.r) / (1 + self.rdiv2) * \
-                self.intval + \
-                ( ( self.frac1 + self.frac2/self.mod2) / self.mod1 ) \
-                 / self.get_output_divider()
+        return self.fref * float(1+self.reference_doubler) / float(self.r) / float(1 + self.rdiv2) * \
+                ( float(self.intval) + \
+                ( float( self.frac1 + self.frac2/self.mod2) / float(self.mod1) )) \
+                 / float(self.get_output_divider())
  
     # sets powerdown
     def set_powerdown( self, value ):
@@ -275,9 +279,18 @@ class ADF4355:
     # program a new frequency
     def program_freq(self, spi_dev) :
         self.counter_reset = 1
-        for n in [10, 4, 2, 1, 0, 4, 0] :
-            self.program_reg(n, spi_dev)
+        self.program_reg(6, spi_dev)
+        self.program_reg(4, spi_dev)
+        self.program_reg(2, spi_dev)
+        self.program_reg(1, spi_dev)
+
+        self.autocal = 0
+        self.program_reg(0, spi_dev)
         self.counter_reset = 0
+        self.program_reg(4, spi_dev)
+
+        self.autocal = 1
+        self.program_reg(0, spi_dev)
 
         
         

@@ -38,8 +38,8 @@ if(False == do_loop) :
     print 'Initialize' 
     rf_pll.program_init(rf_spi)
 
-
-    print 'Programming ADF4355-2 to %g MHz' % (rf_pll.set_freq(freq) / 1e6)
+    f_actual = rf_pll.set_freq(freq) 
+    print 'Programming ADF4355-2 to %g MHz' % (f_actual / 1e6)
 
     print 'R value = %d' % (rf_pll.r)
     print 'INT value = %d' % (rf_pll.intval)
