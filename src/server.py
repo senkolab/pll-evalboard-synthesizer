@@ -10,15 +10,18 @@ channel_dict = dict()
 class Channel():
     def __init__(self, name, pll, spi_dev_pll, spi_cs_pll, amplitute_control=False, atten=None, 
                  spi_dev_atten=None, spi_cs_atten=None ):
-        assert isinstance(pll, PllEvalBoard)
+        assert isinstance(pll, PllEvalBoard) or (pll is None)
         self.name = name
         self.pll = pll
         self.amplitute_control = amplitute_control
-
-        self.spi_pll = spidev.SpiDev()
-        self.spi_pll.open(spi_dev_pll, spi_cs_pll)
-        self.spi_pll.spi_pllspi.cshigh = False 
-        self.spi_pll.max_speed_hz = 100000
+        if pll is not None:
+            self.spi_pll = spidev.SpiDev()
+            self.spi_pll.open(spi_dev_pll, spi_cs_pll)
+            self.spi_pll.spi_pllspi.cshigh = False 
+            self.spi_pll.max_speed_hz = 100000
+        else:
+            #testing condition
+            self.spi_pll = None
 
         if amplitute_control:
             self.spi_atten = spidev.SpiDev()
@@ -39,8 +42,10 @@ class Channel():
         if "freq" in data.keys():
             freq = data["freq"]
             print( "frequency:", freq)
-            self.pll.set_freq(freq)
-            self.pll.program_freq(self.spi_pll)
+            if self.pll is not None:
+                #testing condition
+                self.pll.set_freq(freq)
+                self.pll.program_freq(self.spi_pll)
 
         if "atten" in data.keys():
             print( "attenuation", data["atten"])
@@ -54,7 +59,7 @@ context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:%s" % port)
 
-Channel("test",None,None, None).register_to_channel_dict()
+Channel("test",None,0, 0).register_to_channel_dict()
 
 print("Server is running at port {0}".format(port))
 while True:
@@ -63,7 +68,6 @@ while True:
         for data in datas:
             try:
                 channel = channel_dict[data["name"]]
-                print("setting channel: {0}".format(data["name"]))
             except KeyError:
                 print("invalid channel name: {0}".format(data["name"]))
                 continue
