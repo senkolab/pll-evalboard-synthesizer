@@ -9,7 +9,7 @@
 
 import time
 import spidev
-import adf4355_2
+import pllboard
 import sys
 
 #
@@ -21,7 +21,7 @@ spi_cs = 1
 rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
-rf_pll = adf4355_2.ADF4355()
+rf_pll = pllboard.ADF4355()
 do_loop = False
 freq =  250e6 
 

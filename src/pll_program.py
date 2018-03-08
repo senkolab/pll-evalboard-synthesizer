@@ -8,7 +8,7 @@
 
 import time
 import spidev
-import adf41020
+import pllboard
 import sys
 
 #
@@ -18,7 +18,7 @@ mw_spi = spidev.SpiDev()
 mw_spi.open(0,0)
 mw_spi.cshigh = False 
 mw_spi.max_speed_hz = 100000
-mw_pll = adf41020.ADF41020()
+mw_pll = pllboard.ADF41020()
 do_loop = False
 freq = 14.7e9
 
