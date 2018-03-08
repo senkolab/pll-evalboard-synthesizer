@@ -59,14 +59,19 @@ Channel("test",None,None, None).register_to_channel_dict()
 print("Server is running at port {0}".format(port))
 while True:
     datas = socket.recv_json()
-    for data in datas:
-        try:
-            channel = channel_dict[data["name"]]
-            print("setting channel: {0}".format(data["name"]))
-        except KeyError:
-            print("invalid channel name: {0}".format(data["name"]))
-            continue
-        channel.set_channel(data)
+    try:
+        for data in datas:
+            try:
+                channel = channel_dict[data["name"]]
+                print("setting channel: {0}".format(data["name"]))
+            except KeyError:
+                print("invalid channel name: {0}".format(data["name"]))
+                continue
+            channel.set_channel(data)
+    except Exception as err:
+        socket.send_string(err)
+        continue
+    
     socket.send_string("OK")
 
 
