@@ -14,13 +14,14 @@ import math
 
 class PllEvalBoard:
     def program_freq(self, spi_dev) :
-        pass
+        raise NotImplementedError
+
 
     def program_init(self, spi_dev) :
-        pass
+        raise NotImplementedError
 
-    def set_freq( self, freq):
-        pass
+    def set_freq(self, freq):
+        raise NotImplementedError
 
 class ADF4355(PllEvalBoard):
     # constructor
@@ -416,3 +417,10 @@ class ADF41020(PllEvalBoard):
     # program registers to open spi device
     def program_reg( self, regnum, spi_dev ):
         spi_dev.xfer( self.encode_register(regnum) )
+
+    def program_freq(self, spi_dev):
+        for i in range(3):
+            self.encode_register(i)
+
+        for i in range(3):
+            self.program_reg(i, spi_dev)
