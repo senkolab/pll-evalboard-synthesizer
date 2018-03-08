@@ -23,11 +23,11 @@ class ADF4355:
         self.intval = 0   
 
         # register 1
-        self.frac1 = 0
+        self.frac1 = 7077888    # default from evb programming software
 
         # register 2
         self.frac2 = 0
-        self.mod2 = 0
+        self.mod2 = 1536  # default from evb software
 
         # register 3
         self.sd_load_reset = 0
@@ -36,7 +36,7 @@ class ADF4355:
         self.p = 0
 
         # register 4
-        self.muxout = 3 # digital lock det
+        self.muxout = 6         # digital lock det
         self.reference_doubler = 0
         self.rdiv2 = 1          # enabled
         self.r = 1              # eval board default
@@ -44,7 +44,7 @@ class ADF4355:
         self.current = 2        # eval board default: 0.93mA
         self.ref_mode = 1       # eval board default: differential
         self.mux_logic = 1      # eval board default: 3.3v
-        self.pd_polarity = 0    # eval board default: positive
+        self.pd_polarity = 1    # eval board default: positive
         self.pd = 0             # power down
         self.cp_tristate = 0    # disable
         self.counter_reset = 0  # disable
@@ -59,10 +59,10 @@ class ADF4355:
         self.rf_divider_select = 2      # eval board default: div-by-4
         self.cp_bleed_current = 9       # 9x3.75uA = 33.75uA
         self.mtld = 0                   # disabled
-        self.auxrf_output_enable = 0    # disabled
+        self.auxrf_output_enable = 1    # enabled
         self.auxrf_output_power = 1     # eval board default -1dBm
         self.rf_output_enable = 1       # enabled
-        self.rf_output_power = 0        # +5dBm
+        self.rf_output_power = 3        # +5dBm
         
         # register 7
         self.le_sync = 1                # eval board default: enabled
@@ -124,7 +124,7 @@ class ADF4355:
         self.intval = int(int_N)
         self.frac1 = int(math.floor(fract_N * self.mod1))  # frac1 = remainder * 2^24
         self.frac2 = 0
-        self.mod2 = 1
+        self.mod2 = 1536    # default from evb programming software
         return self.get_freq()
 
     #
@@ -159,27 +159,29 @@ class ADF4355:
                   | ((s.ref_mode & 1) << 9) | ((s.mux_logic & 1) << 8) | ((s.pd_polarity & 1) << 7) \
                   | ((s.pd & 1) << 6) | ((s.cp_tristate & 1) << 5) | ((s.counter_reset & 1) << 4)  | regnum
         if( regnum == 5 ):
-            reg = (regnum)
+            reg = (1 << 23) | (regnum)
         if( regnum == 6 ):
-            reg = ((s.gated_bleed & 1) << 30) | ((s.negative_bleed & 1) << 29) | ((s.feedback_select & 1) << 24) \
-                  | ((s.rf_divider_select & 0x7) << 21) | ((s.cp_bleed_current & 0xff) << 13) | ((s.mtld & 1) << 11) \
+            reg = ((s.gated_bleed & 1) << 30) | ((s.negative_bleed & 1) << 29) | (0xa << 25) \
+                  | ((s.feedback_select & 1) << 24) | ((s.rf_divider_select & 0x7) << 21) \
+                  | ((s.cp_bleed_current & 0xff) << 13) | ((s.mtld & 1) << 11) \
                   | ((s.auxrf_output_enable & 1) << 9) | ((s.auxrf_output_power & 0x3) << 7) \
                   | ((s.rf_output_enable & 1) << 6) | ((s.rf_output_power & 0x3) << 4)| (regnum)
         if( regnum == 7 ):
-            reg = ((s.le_sync & 1) << 25) | ((s.ld_cycle_count & 0x3) << 8) | ((s.lol_mode & 1) << 7) \
-                  | (( s.frac_n_ld_precision & 0x3) << 5) | (( s.lol_mode & 1) << 4) | (regnum)
+            reg = (1<<28) | ((s.le_sync & 1) << 25) | ((s.ld_cycle_count & 0x3) << 8) \
+                  | ((s.lol_mode & 1) << 7) | (( s.frac_n_ld_precision & 0x3) << 5) \
+                  | (( s.lol_mode & 1) << 4) | (regnum)
         if( regnum == 8 ):
-            reg = (regnum)
+            reg = (0x102D042 << 4) | (regnum)
         if( regnum == 9 ):
             reg = ((s.vco_band_division & 0xff) << 24) | ((s.timeout & 0x3ff) << 14)  \
                   | ((s.autolevel_timeout & 0x1f) << 9) | ((s.synth_timeout & 0x1f) << 4) | (regnum)
         if( regnum == 10 ):
-            reg = ((s.adc_clk_div & 0xff) << 6) | ((s.adc_conversion & 1) << 5) | ((s.adc_enable & 1) << 4) \
-                  | (regnum)
+            reg = (0x3 << 22) | ((s.adc_clk_div & 0xff) << 6) | ((s.adc_conversion & 1) << 5) \
+                  | ((s.adc_enable & 1) << 4) | (regnum)
         if( regnum == 11 ):
-            reg = (regnum)
+            reg = (0x0061300 << 4) | (regnum)
         if( regnum == 12 ):
-            reg = ((s.resync_clock & 0xffff) << 16) | (regnum)
+            reg = ((s.resync_clock & 0xffff) << 16) | (1 << 10) | (1 << 4) | (regnum)
 
         # split into 4 8-bit values for SPI transfer
         return [ ((reg >> 24) & 0xff), ((reg >> 16) & 0xff), ((reg >> 8) & 0xff), (reg & 0xff) ]
@@ -255,8 +257,9 @@ class ADF4355:
 
     # program registers to open spi device
     def program_reg( self, regnum, spi_dev ):
-        print "programming reg %d" % (regnum)
-        spi_dev.xfer( self.encode_registers(regnum) )
+        buf = self.encode_registers(regnum)
+        print "programming reg %2d: %02x%02x%02x%02x" % (regnum, buf[0], buf[1], buf[2], buf[3])
+        spi_dev.xfer( buf )
 
 
     
