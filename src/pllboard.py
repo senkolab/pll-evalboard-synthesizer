@@ -131,8 +131,8 @@ class ADF4355(PllEvalBoard):
         N = f_vco / f_pfd
 
         fract_N, int_N = math.modf(N)
-        print 'fref=%g   freq=%g   div=%d   pfd=%g   vco=%g   N=%g   int_N=%g   frac_N=%g   rf_div_sel=%d' \
-                % (self.fref, freq, div_out, f_pfd, f_vco, N, int_N, fract_N, self.rf_divider_select)
+        print('fref=%g   freq=%g   div=%d   pfd=%g   vco=%g   N=%g   int_N=%g   frac_N=%g   rf_div_sel=%d' \
+                % (self.fref, freq, div_out, f_pfd, f_vco, N, int_N, fract_N, self.rf_divider_select))
 
         # ignore optimization - just use frac2=0 for simplicity
         # frac1 = math.floor(fract_N * self.mod1)
@@ -275,7 +275,7 @@ class ADF4355(PllEvalBoard):
     # program registers to open spi device
     def program_reg( self, regnum, spi_dev ):
         buf = self.encode_registers(regnum)
-        print "programming reg %2d: %02x%02x%02x%02x" % (regnum, buf[0], buf[1], buf[2], buf[3])
+        print("programming reg %2d: %02x%02x%02x%02x" % (regnum, buf[0], buf[1], buf[2], buf[3]))
         spi_dev.xfer( buf )
 
 
