@@ -8,78 +8,82 @@
 
 import time
 import spidev
+import math
 
 class ADF4355:
     # constructor
-    def __init__(self, fref=122.88e6):
+    def __init__(self, fref=122.88e6, fspace=100e3):
         self.fref = fref * 1.0  # force float
-        
+        self.fspace = fspace * 1.0
+        self.mod1 = 1 << 24     # fixed modulus: datasheet pg 13
+
         # register 0
-        self.autocal = 0
+        self.autocal = 1
         self.prescaler = 0
-        self.n = 0   
+        self.intval = 0   
 
         # register 1
-        self.f = 0
+        self.frac1 = 0
 
         # register 2
-        self.faux = 0
-        self.m = 0
+        self.frac2 = 0
+        self.mod2 = 0
 
         # register 3
-        self.sd_load_preset = 0
+        self.sd_load_reset = 0
         self.phase_resync = 0
         self.phase_adjust = 0
         self.p = 0
 
         # register 4
-        self.muxout = 0
+        self.muxout = 3 # digital lock det
         self.reference_doubler = 0
-        self.rdiv2 = 0
-        self.r = 0
-        self.double_buff = 0
-        self.current = 0
-        self.ref_mode = 0
-        self.mux_logic = 0
-        self.pd_polarity = 0
-        self.pd = 0
-        self.cp_tristate = 0
-        self.counter_reset = 0
+        self.rdiv2 = 1          # enabled
+        self.r = 1              # eval board default
+        self.double_buf = 0     # disabled
+        self.current = 2        # eval board default: 0.93mA
+        self.ref_mode = 1       # eval board default: differential
+        self.mux_logic = 1      # eval board default: 3.3v
+        self.pd_polarity = 0    # eval board default: positive
+        self.pd = 0             # power down
+        self.cp_tristate = 0    # disable
+        self.counter_reset = 0  # disable
 
         #register 5
         # all reserved
 
         # register 6
-        self.gated_bleed = 0
-        self.nevgative_bleed = 0
-        self.feedback_select = 0
-        self.rf_divider_select = 0
-        self.cp_bleed_current = 0
-        self.mtld = 0
-        self.auxrf_output_enable = 0
-        self.auxrf_output_power = 0
-        self.rf_output_power = 0
+        self.gated_bleed = 0            # disabled
+        self.negative_bleed = 1         # enabled 
+        self.feedback_select = 1        # fundamental
+        self.rf_divider_select = 2      # eval board default: div-by-4
+        self.cp_bleed_current = 9       # 9x3.75uA = 33.75uA
+        self.mtld = 0                   # disabled
+        self.auxrf_output_enable = 0    # disabled
+        self.auxrf_output_power = 1     # eval board default -1dBm
+        self.rf_output_enable = 1       # enabled
+        self.rf_output_power = 0        # +5dBm
         
         # register 7
-        self.le_sync = 0
-        self.ld_cycle_count = 0
-        self.lol_mode = 0
-        self.frac_n_ld_precision = 0
-        self.ldo_mode = 0
+        self.le_sync = 1                # eval board default: enabled
+        self.ld_cycle_count = 0         # eval board default: 1024 cycles
+        self.lol_mode = 0               # disabled
+        self.frac_n_ld_precision = 0    # eval board default: 5ns
+        self.ld_mode = 0                # fractional-n
 
         # register 8
         # all reserved
         
         # register 9
-        self.vco_band_division = 0
-        self.timeout = 0
-        self.autolevel_timeout = 0
-        self.synth_timeout = 0
+        self.vco_band_division = 11     # eval board autoset
+        self.timeout = 103              # eval board autoset
+        self.autolevel_timeout = 30     # eval board autoset
+        self.synth_timeout = 12         # eval board autoset
 
         # register 10
-        self.adc_clk_div = 0
-        self.adc_conversion = 0
-        self.adc_enable = 0
+        self.adc_clk_div = 78           # eval board autoset
+        self.adc_conversion = 1         # eval board default: enabled
+        self.adc_enable = 1             # eval board default: enabled
 
         # register 11
         # all reserved
@@ -88,73 +92,101 @@ class ADF4355:
         self.resync_clock = 0
 
 
+    # get the ouptut divider ratio
+    #   ref adf4355-2 datasheet page 25
+    def get_output_divider(self) :
+        T = self.rf_divider_select
+        if(T < 6) :
+            return (1 << T)     # equiv 2^T
+        else :
+            return 1
+
+
     # sets a frequency
-    def set_freq( freq ):
-        D = reference_doubler
-        R = 1.0 # fixme
+    def set_freq( self, freq ):
+        D = self.reference_doubler
+        R = self.r
+        T = self.rdiv2
+        div_out = self.get_output_divider()
+
         # from ADF4355-2 dadasheet rev C pg 13
-        f_pfd = fref * (1 + D) / (R * (1 + T))
-        f_vco = freq * 
-        N = 1.0 #fixme
+        f_pfd = self.fref * (1 + D) / (R * (1 + T))
+        f_vco = freq * div_out
+        N = f_vco / f_pfd
 
-# gets current frequency
-    def get_freq( ):
-        pass
+        fract_N, int_N = math.modf(N)
+        print 'fref=%g   freq=%g   pfd=%g   vco=%g   N=%g   int_N=%g   frac_N=%g' % (self.fref, freq, f_pfd, f_vco, N, int_N, fract_N)
 
+        # ignore optimization - just use frac2=0 for simplicity
+        # frac1 = math.floor(fract_N * self.mod1)
+        # mod2 = f_pdf / math.gcd(f_pfd, self.fspace)
+        # frac2 = ((N - int_N)*self.mod1 - frac1) * mod2
+        self.intval = int(int_N)
+        self.frac1 = int(math.floor(fract_N * self.mod1))  # frac1 = remainder * 2^24
+        self.frac2 = 0
+        self.mod2 = 1
+        return self.get_freq()
 
-
+    #
+    # gets current frequency
+    def get_freq( self ):
+        return self.fref * (1+self.reference_doubler) / (self.r) / (1 + self.rdiv2) * \
+                self.intval + \
+                ( ( self.frac1 + self.frac2/self.mod2) / self.mod1 ) \
+                 / self.get_output_divider()
+ 
     # sets powerdown
-    def set_powerdown( value ):
+    def set_powerdown( self, value ):
         pass
 
     # encode the binary value of each register into 32 bits per ADF 4355-2 datasheet Fig 29
-    def encode_registers( regnum ):
-        
+    def encode_registers( self, regnum ):
+        s = self 
         reg = 0
 
         if( regnum == 0 ):
-            reg = ((autocal & 1) << 21) | ((prescaler & 1) << 20) | ((n & 0xffff) << 4) | (regnum)
+            reg = ((s.autocal & 1) << 21) | ((s.prescaler & 1) << 20) | ((s.intval & 0xffff) << 4) | (regnum)
         if( regnum == 1 ):
-            reg = ((f & 0xffffff) << 4) | (regnum)
+            reg = ((s.frac1 & 0xffffff) << 4) | (regnum)
         if( regnum == 2 ):
-            reg = ((faux & 0x3fff) << 18) | ((m & 0x3fff) << 4) | (regnum)
+            reg = ((s.frac2 & 0x3fff) << 18) | ((s.mod2 & 0x3fff) << 4) | (regnum)
         if( regnum == 3 ):
-            reg = ((sd_load_reset & 1) << 30) | ((phase_resync & 1) << 29) | ((phase_adjust & 1) << 28) \
-                  | ((p & 0xffffff) << 4) | (regnum)
+            reg = ((s.sd_load_reset & 1) << 30) | ((s.phase_resync & 1) << 29) | ((s.phase_adjust & 1) << 28) \
+                  | ((s.p & 0xffffff) << 4) | (regnum)
         if( regnum == 4 ):
-            reg = ((muxout & 0x7) << 27) | ((reference_doubler & 1) << 26) | ((rdiv2 & 1) << 25) \
-                  | ((r & 0x3ff) << 15) | ((double_buf & 1) << 14) | ((current & 0xf) << 10) \
-                  | ((ref_mode & 1) << 9) | ((mux_logic & 1) << 8) | ((pd_polarity & 1) << 7) \
-                  | ((pd & 1) << 6) | ((cp_tristate & 1) << 5) | ((counter_reset & 1) << 4)  | regnum
+            reg = ((s.muxout & 0x7) << 27) | ((s.reference_doubler & 1) << 26) | ((s.rdiv2 & 1) << 25) \
+                  | ((s.r & 0x3ff) << 15) | ((s.double_buf & 1) << 14) | ((s.current & 0xf) << 10) \
+                  | ((s.ref_mode & 1) << 9) | ((s.mux_logic & 1) << 8) | ((s.pd_polarity & 1) << 7) \
+                  | ((s.pd & 1) << 6) | ((s.cp_tristate & 1) << 5) | ((s.counter_reset & 1) << 4)  | regnum
         if( regnum == 5 ):
             reg = (regnum)
         if( regnum == 6 ):
-            reg = ((gate_bleed & 1) << 30) | ((negative_bleed & 1) << 29) | ((feedback_select & 1) << 24) \
-                  | ((rf_divider_select & 0x7) << 21) | ((cp_bleed_current & 0xff) << 13) | ((mltd & 1) << 11) \
-                  | ((auxrf_output_enable & 1) << 9) | ((auxrf_output_power & 0x3) << 7) \
-                  | ((rf_output_enable & 1) << 6) | ((rf_output_power & 0x3) << 4)| (regnum)
+            reg = ((s.gated_bleed & 1) << 30) | ((s.negative_bleed & 1) << 29) | ((s.feedback_select & 1) << 24) \
+                  | ((s.rf_divider_select & 0x7) << 21) | ((s.cp_bleed_current & 0xff) << 13) | ((s.mtld & 1) << 11) \
+                  | ((s.auxrf_output_enable & 1) << 9) | ((s.auxrf_output_power & 0x3) << 7) \
+                  | ((s.rf_output_enable & 1) << 6) | ((s.rf_output_power & 0x3) << 4)| (regnum)
         if( regnum == 7 ):
-            reg = ((le_sync & 1) << 25) | ((ld_cycle_count & 0x3) << 8) | ((lol_mode & 1) << 7) \
-                  | (( frac_n_ld_precision & 0x3) << 5) | (( ldo_mode & 1) << 4) | (regnum)
+            reg = ((s.le_sync & 1) << 25) | ((s.ld_cycle_count & 0x3) << 8) | ((s.lol_mode & 1) << 7) \
+                  | (( s.frac_n_ld_precision & 0x3) << 5) | (( s.lol_mode & 1) << 4) | (regnum)
         if( regnum == 8 ):
             reg = (regnum)
         if( regnum == 9 ):
-            reg = ((vco_band_division & 0xff) << 24) | ((timeout & 0x3ff) << 14)  \
-                  | ((autolevel_timeout & 0x1f) << 9) | ((synth_timeout & 0x1f) << 4) | (regnum)
+            reg = ((s.vco_band_division & 0xff) << 24) | ((s.timeout & 0x3ff) << 14)  \
+                  | ((s.autolevel_timeout & 0x1f) << 9) | ((s.synth_timeout & 0x1f) << 4) | (regnum)
         if( regnum == 10 ):
-            reg = ((adc_clk_div & 0xff) << 6) | ((adc_conversion & 1) << 5) | ((adc_enable & 1) << 4) \
+            reg = ((s.adc_clk_div & 0xff) << 6) | ((s.adc_conversion & 1) << 5) | ((s.adc_enable & 1) << 4) \
                   | (regnum)
         if( regnum == 11 ):
-            reg = 0 (regnum)
+            reg = (regnum)
         if( regnum == 12 ):
-            reg = ((resync_clock & 0xffff) << 16) | (regnum)
+            reg = ((s.resync_clock & 0xffff) << 16) | (regnum)
 
         # split into 4 8-bit values for SPI transfer
         return [ ((reg >> 24) & 0xff), ((reg >> 16) & 0xff), ((reg >> 8) & 0xff), (reg & 0xff) ]
 
         
     # decode retured bytes into the value of each register per ADF 4355-2 datasheet Fig 29
-    def decode_registers( byte_array ):
+    def decode_registers( self, byte_array ):
         
         # convert individual 8-bit bytes to 32-bit word
         reg = (byte_array[3] << 24) | (byte_array[2] << 16) | (byte_array[1] << 8) | (byte_array)
@@ -163,64 +195,86 @@ class ADF4355:
         regnum = reg & 0xf
 
         if( regnum == 0 ):
-            autocal = (reg >> 21) & 1 
-            prescaler = (reg >> 20) & 1 
-            n = (reg >> 4) & 0xffff 
+            s.autocal = (reg >> 21) & 1 
+            s.prescaler = (reg >> 20) & 1 
+            s.intval = (reg >> 4) & 0xffff 
         if( regnum == 1 ):
-            f = (reg >> 4) & 0xffffff 
+            s.frac1 = (reg >> 4) & 0xffffff 
         if( regnum == 2 ):
-            faux = (reg >> 18) & 0x3fff 
-            m = (reg >> 4) & 0x3fff 
+            s.frac2 = (reg >> 18) & 0x3fff 
+            s.mod2 = (reg >> 4) & 0x3fff 
         if( regnum == 3 ):
-            sd_load_reset = (reg >> 30) & 1 
-            phase_resync = (reg >> 29) & 1 
-            phase_adjust = (reg >> 28) & 1 
-            p = (reg >> 4) & 0xffffff 
+            s.sd_load_reset = (reg >> 30) & 1 
+            s.phase_resync = (reg >> 29) & 1 
+            s.phase_adjust = (reg >> 28) & 1 
+            s.p = (reg >> 4) & 0xffffff 
         if( regnum == 4 ):
-            muxout = (reg >> 27) & 0x7 
-            reference_doubler = (reg >> 26) & 1 
-            rdiv2 = (reg >> 25) & 1 
-            r = (reg >> 15) & 0x3ff 
-            double_buf = (reg >> 14) & 1 
-            current = (reg >> 10) & 0xf 
-            ref_mode = (reg >> 9) & 1 
-            mux_logic = (reg >> 8) & 1 
-            pd_polarity = (reg >> 7) & 1
-            pd = (reg >> 6) & 1 
-            cp_tristate = (reg >> 5) & 1 
-            counter_reset = (reg >> 4) & 1  
+            s.muxout = (reg >> 27) & 0x7 
+            s.reference_doubler = (reg >> 26) & 1 
+            s.rdiv2 = (reg >> 25) & 1 
+            s.r = (reg >> 15) & 0x3ff 
+            s.double_buf = (reg >> 14) & 1 
+            s.current = (reg >> 10) & 0xf 
+            s.ref_mode = (reg >> 9) & 1 
+            s.mux_logic = (reg >> 8) & 1 
+            s.pd_polarity = (reg >> 7) & 1
+            s.pd = (reg >> 6) & 1 
+            s.cp_tristate = (reg >> 5) & 1 
+            s.counter_reset = (reg >> 4) & 1  
         if( regnum == 6 ):
-            gate_bleed = (reg >> 30) & 1 
-            negative_bleed = (reg >> 29) & 1 
-            feedback_select = (reg >> 24) & 1 
-            rf_divider_select = (reg >> 21) & 0x7 
-            cp_bleed_current = (reg >> 13) & 0xff 
-            mltd = (reg >> 11) & 1 
-            auxrf_output_enable = (reg >> 9) & 1 
-            auxrf_output_power = (reg >> 7) & 0x3 
-            rf_output_enable = (reg >> 6) & 1 
-            rf_output_power = (reg >> 4) & 0x3
+            s.gated_bleed = (reg >> 30) & 1 
+            s.negative_bleed = (reg >> 29) & 1 
+            s.feedback_select = (reg >> 24) & 1 
+            s.rf_divider_select = (reg >> 21) & 0x7 
+            s.cp_bleed_current = (reg >> 13) & 0xff 
+            s.mtld = (reg >> 11) & 1 
+            s.auxrf_output_enable = (reg >> 9) & 1 
+            s.auxrf_output_power = (reg >> 7) & 0x3 
+            s.rf_output_enable = (reg >> 6) & 1 
+            s.rf_output_power = (reg >> 4) & 0x3
         if( regnum == 7 ):
-            le_sync = (reg >> 25) & 1 
-            ld_cycle_count = (reg >> 8) & 0x3 
-            lol_mode = (reg >> 7) & 1 
-            frac_n_ld_precision = (reg >> 5) & 0x3 
-            ldo_mode = (reg >> 4) & 1 
+            s.le_sync = (reg >> 25) & 1 
+            s.ld_cycle_count = (reg >> 8) & 0x3 
+            s.lol_mode = (reg >> 7) & 1 
+            s.frac_n_ld_precision = (reg >> 5) & 0x3 
+            s.lol_mode = (reg >> 4) & 1 
         if( regnum == 9 ):
-            vco_band_division = (reg >> 24) & 0xff 
-            timeout = (reg >> 14) & 0x3ff
-            autolevel_timeout = (reg >> 9) & 0x1f 
-            synth_timeout = (reg >> 4) & 0x1f 
+            s.vco_band_division = (reg >> 24) & 0xff 
+            s.timeout = (reg >> 14) & 0x3ff
+            s.autolevel_timeout = (reg >> 9) & 0x1f 
+            s.synth_timeout = (reg >> 4) & 0x1f 
         if( regnum == 10 ):
-            adc_clk_div = (reg >> 6) & 0xff 
-            adc_conversion = (reg >> 5) & 1 
-            adc_enable = (reg >> 4) & 1 
+            s.adc_clk_div = (reg >> 6) & 0xff 
+            s.adc_conversion = (reg >> 5) & 1 
+            s.adc_enable = (reg >> 4) & 1 
         if( regnum == 12 ):
-            resync_clock = (reg >> 16) & 0xffff 
+            s.resync_clock = (reg >> 16) & 0xffff 
 
 
 
 
+    # program registers to open spi device
+    def program_reg( self, regnum, spi_dev ):
+        print "programming reg %d" % (regnum)
+        spi_dev.xfer( self.encode_registers(regnum) )
+
+
+    
+    # program all registers
+    # program in reverse order (ADF4355-2 Datasheet pg 30
+    def program_init(self, spi_dev) :
+        self.counter_reset = 1
+        for n in range(12, -1, -1) :
+            self.program_reg(n, spi_dev)
+        self.counter_reset = 0
+     
+    #
+    # program a new frequency
+    def program_freq(self, spi_dev) :
+        self.counter_reset = 1
+        for n in [10, 4, 2, 1, 0, 4, 0] :
+            self.program_reg(n, spi_dev)
+        self.counter_reset = 0
 
         
         
