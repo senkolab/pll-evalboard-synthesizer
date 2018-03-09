@@ -27,16 +27,16 @@ class client_GUI(QMainWindow, Ui_MainWindow):
 
         self.is_connected = False
 
-        self.verbose("[WELCOME] This program is developed by Chung-You (Gilbert) Shih @ QITI lab, IQC, UWaterloo.")
-        self.verbose("[WELCOME] For more information, please visit https://github.com/senkolab/pll-evalboard-synthesizer")
-
+        self.verbose("[WELCOME] This program is developed by Chung-You (Gilbert) Shih @ QITI lab, IQC, UWaterloo.", color="green")
+        self.verbose("[WELCOME] For more information, please visit https://github.com/senkolab/pll-evalboard-synthesizer", color="green")
+        
     def connect(self):
         self.socket.connect("tcp://" + self.lineEdit_address.text())
         self.is_connected = True
 
     def set_device(self):
         if not self.is_connected:
-            self.verbose("[ERROR] Haven't connect to any device!")
+            self.verbose("[ERROR] Haven't connect to any device!", color="red")
             return
 
         data = []
@@ -63,7 +63,7 @@ class client_GUI(QMainWindow, Ui_MainWindow):
             with open('config.json', 'r') as infile:
                 config = json.load(infile)
         except IOError:
-            self.verbose("[IOError] Cannot load configuration file!")
+            self.verbose("[IOError] Cannot load configuration file!", color="red")
             return
 
         for key, ch_widget in self.dict_of_channel_widgets.items():
@@ -73,8 +73,8 @@ class client_GUI(QMainWindow, Ui_MainWindow):
         self.verbose("[MSG] Load Configuration successfully.")
         
 
-    def verbose(self, string):
-        self.textBrowser.insertPlainText(string+'\n')
+    def verbose(self, string, color="white"):
+        self.textBrowser.insertHtml("<p style='color:{0}'>".format(color)+string+'<br></p>')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
