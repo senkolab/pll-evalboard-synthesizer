@@ -31,8 +31,13 @@ class client_GUI(QMainWindow, Ui_MainWindow):
         self.verbose("[WELCOME] For more information, please visit https://github.com/senkolab/pll-evalboard-synthesizer", color="green")
         
     def connect(self):
-        self.socket.connect("tcp://" + self.lineEdit_address.text())
-        self.is_connected = True
+        try:
+            self.socket.connect("tcp://" + self.lineEdit_address.text())
+            self.is_connected = True
+        except zmq.error.ZMQError as err:
+            self.verbose("[ZMQERROR] " + str(err), color="red")
+            self.is_connected = False
+
 
     def set_device(self):
         if not self.is_connected:
@@ -43,9 +48,9 @@ class client_GUI(QMainWindow, Ui_MainWindow):
         for ch_widget in self.dict_of_channel_widgets.values():
             if ch_widget.is_configuring_channel():
                 data.append(ch_widget.get_data())
-        
+        self.verbose("[MSG] "+"Setting the device...")
         self.socket.send_json(data)
-        self.verbose("[REPLY] "+self.socket.recv_string())
+        self.verbose("[REPLY] "+self.socket.recv_string(), color="yellow")
 
     def save_config(self):
         config = dict()
