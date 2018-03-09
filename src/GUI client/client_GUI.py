@@ -1,14 +1,17 @@
 from PyQt5.uic import compileUi
-with open("mainwindow.ui", 'r') as infile:
-    with open("mainwindow.py", 'w') as outfile:
-        compileUi(infile, outfile, execute=True) 
-with open("channel_frame.ui", 'r') as infile:
-    with open("channel_frame.py", 'w') as outfile:
-        compileUi(infile, outfile, execute=True)     
+import sys
+try:
+    with open("mainwindow.ui", 'r') as infile:
+        with open("mainwindow.py", 'w') as outfile:
+            compileUi(infile, outfile, execute=True) 
+    with open("channel_frame.ui", 'r') as infile:
+        with open("channel_frame.py", 'w') as outfile:
+            compileUi(infile, outfile, execute=True)     
+except Exception:
+    sys.exit("Failed to compile the ui files")
 
 
 from PyQt5.QtWidgets import QFrame, QApplication, QWidget, QMainWindow
-import sys
 from mainwindow import Ui_MainWindow
 import json
 import zmq
