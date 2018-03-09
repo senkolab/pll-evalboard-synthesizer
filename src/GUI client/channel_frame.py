@@ -20,6 +20,7 @@ class Ui_Frame(object):
         Frame.setMinimumSize(QtCore.QSize(449, 0))
         self.doubleSpinBox_freq = QtWidgets.QDoubleSpinBox(Frame)
         self.doubleSpinBox_freq.setGeometry(QtCore.QRect(128, 60, 101, 26))
+        self.doubleSpinBox_freq.setMaximum(20000.0)
         self.doubleSpinBox_freq.setObjectName("doubleSpinBox_freq")
         self.label_3 = QtWidgets.QLabel(Frame)
         self.label_3.setGeometry(QtCore.QRect(246, 67, 26, 17))
