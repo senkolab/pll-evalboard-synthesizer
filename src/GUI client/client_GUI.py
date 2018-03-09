@@ -1,6 +1,11 @@
 from PyQt5.uic import compileUi
-compileUi("mainwindow.ui", "mainwindow.py", execute=True)
-compileUi("controller_frame.ui", "controller_frame.py", execute=True)
+with open("mainwindow.ui", 'r') as infile:
+    with open("mainwindow.py", 'w') as outfile:
+        compileUi(infile, outfile, execute=True) 
+with open("channel_frame.ui", 'r') as infile:
+    with open("channel_frame.py", 'w') as outfile:
+        compileUi(infile, outfile, execute=True)     
+
 
 from PyQt5.QtWidgets import QFrame, QApplication, QWidget, QMainWindow
 import sys
