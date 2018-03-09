@@ -193,6 +193,8 @@ class ADF4355:
         
     # decode retured bytes into the value of each register per ADF 4355-2 datasheet Fig 29
     def decode_registers( self, byte_array ):
+
+        s = self
         
         # convert individual 8-bit bytes to 32-bit word
         reg = (byte_array[3] << 24) | (byte_array[2] << 16) | (byte_array[1] << 8) | (byte_array)
