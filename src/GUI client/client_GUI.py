@@ -1,3 +1,7 @@
+from PyQt5.uic import compileUi
+compileUi("mainwindow.ui", "mainwindow.py", execute=True)
+compileUi("controller_frame.ui", "controller_frame.py", execute=True)
+
 from PyQt5.QtWidgets import QFrame, QApplication, QWidget, QMainWindow
 import sys
 from mainwindow import Ui_MainWindow
@@ -16,19 +20,17 @@ class client_GUI(QMainWindow, Ui_MainWindow):
         self.pushButton_load.clicked.connect(self.load_config)
         self.pushButton_connect.clicked.connect(self.connect)
         self.pushButton_set_device.clicked.connect(self.set_device)
-        self.dict_of_channel_widgets={
-            "EOM1": self.Channel_Widget_EOM_1,
-            "EOM2": self.Channel_Widget_EOM_2,
-            "EOM3": self.Channel_Widget_EOM_3,
-            "AOM1": self.Channel_Widget_AOM_1,
-            "AOM2": self.Channel_Widget_AOM_2,
-
-        }
 
         self.is_connected = False
 
         self.verbose("[WELCOME] This program is developed by Chung-You (Gilbert) Shih @ QITI lab, IQC, UWaterloo.", color="green")
         self.verbose("[WELCOME] For more information, please visit https://github.com/senkolab/pll-evalboard-synthesizer", color="green")
+        
+        self.dict_of_channel_widgets = dict()
+        for key in self.__dict__.keys():
+            if key[0:15] == "Channel_Widget_":
+                self.dict_of_channel_widgets[key] = self.__dict__[key]
+
         
     def connect(self):
         try:
