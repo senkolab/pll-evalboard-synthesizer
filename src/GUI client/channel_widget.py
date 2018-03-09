@@ -15,6 +15,7 @@ class Channel_Widget(QFrame, Ui_Frame):
         data["freq"] = int(self.doubleSpinBox_freq.value()*10e6)
         if self.checkBox_amp_control.isChecked():
             data["atten"] = int(self.spinBox_atten.value())
+        return data
         
     def is_configuring_channel(self):
         if self.checkBox_configure_channel.isChecked():
