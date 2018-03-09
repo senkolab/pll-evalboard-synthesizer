@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>RF Source Controller</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QToolBox" name="toolBox">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_EOM">
      <property name="geometry">
@@ -41,8 +41,8 @@
      <widget class="QTabWidget" name="tabWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>0</y>
+        <x>0</x>
+        <y>10</y>
         <width>511</width>
         <height>191</height>
        </rect>
@@ -167,7 +167,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>10</y>
         <width>511</width>
         <height>191</height>
        </rect>
@@ -391,10 +391,23 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>310</y>
+      <y>330</y>
       <width>851</width>
-      <height>251</height>
+      <height>281</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="Line" name="line_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>310</y>
+      <width>841</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
   </widget>

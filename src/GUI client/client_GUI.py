@@ -24,15 +24,26 @@ class client_GUI(QMainWindow, Ui_MainWindow):
             "AOM2": self.Channel_Widget_AOM_2,
 
         }
+
+        self.is_connected = False
+
+        self.verbose("[WELCOME] This program is developed by Chung-You (Gilbert) Shih @ QITI lab, IQC, UWaterloo.")
+        self.verbose("[WELCOME] For more information, please visit https://github.com/senkolab/pll-evalboard-synthesizer")
+
     def connect(self):
         self.socket.connect("tcp://" + self.lineEdit_address.text())
+        self.is_connected = True
 
     def set_device(self):
+        if not self.is_connected:
+            self.verbose("[ERROR] Haven't connect to any device!")
+            return
+
         data = []
         for ch_widget in self.dict_of_channel_widgets.values():
             if ch_widget.is_configuring_channel():
                 data.append(ch_widget.get_data())
-        print(data)
+        
         self.socket.send_json(data)
         self.verbose("[REPLY] "+self.socket.recv_string())
 
