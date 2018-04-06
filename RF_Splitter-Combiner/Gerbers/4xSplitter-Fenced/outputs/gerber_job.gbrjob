@@ -1,0 +1,11 @@
+G04 Gerber job file.*
+%TF.FileFunction,JobInfo*%
+%TF.GenerationSoftware,Autodesk,EAGLE,8.7.1*%
+%TF.CreationDate,2018-04-02T23:24:43Z*%
+%TF.Part,Single*%
+%MOMM*%
+%TJ.B_Owner,Brendan Bramman <bbramman@uwaterloo.ca>*%
+%TJ.B_ID,4xSplitter-ViasAround*%
+%TJ.B_LayerNum,2*%
+%TJ.B_Thickness,1.570000*%
+M02*

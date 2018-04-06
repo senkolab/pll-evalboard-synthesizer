@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="SynthBox.svg">
+   sodipodi:docname="SynthBox2.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,10 +26,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="329.93255"
-     inkscape:cy="114.11252"
+     inkscape:cx="511.01882"
+     inkscape:cy="117.53362"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4699-5-2"
      showgrid="false"
      inkscape:window-width="1618"
      inkscape:window-height="1027"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1091,22 +1091,12 @@
            style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
            y="81.313484"
            x="28.501978"
-           sodipodi:role="line">ALD5534</tspan><tspan
+           sodipodi:role="line">ADL5534</tspan><tspan
            style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
            y="86.605148"
            x="28.501978"
            sodipodi:role="line"
-           id="tspan1054">Amplifier</tspan><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
-           y="91.89682"
-           x="28.501978"
-           sodipodi:role="line"
-           id="tspan1056">5V</tspan></text>
-      <path
-         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 39.871165,-3.5561866 -62.189404,-1.2800727 -3.72243,79.0602603"
-         id="path1050"
-         inkscape:connector-curvature="0" />
+           id="tspan1074">Amplifier</tspan></text>
     </g>
     <g
        transform="translate(25.79151,37.533646)"
@@ -1227,6 +1217,55 @@
                y="86.605148"
                x="28.501978"
                sodipodi:role="line">Synth 5V</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:3.88055563px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="42.315689"
+             y="83.988136"
+             id="text1058"><tspan
+               sodipodi:role="line"
+               id="tspan1056"
+               x="42.315689"
+               y="83.988136"
+               style="stroke-width:0.26458332">0dBm</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:3.88055563px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="82.923012"
+             y="82.988052"
+             id="text1062"><tspan
+               sodipodi:role="line"
+               id="tspan1060"
+               x="82.923012"
+               y="82.988052"
+               style="stroke-width:0.26458332">+20dBm</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:3.88055563px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="125.34732"
+             y="82.854355"
+             id="text1066"><tspan
+               sodipodi:role="line"
+               id="tspan1064"
+               x="125.34732"
+               y="82.854355"
+               style="stroke-width:0.26458332">+10.5dBm</tspan><tspan
+               sodipodi:role="line"
+               x="125.34732"
+               y="87.705048"
+               style="stroke-width:0.26458332"
+               id="tspan1068" /></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:3.88055563px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="170.17607"
+             y="81.400826"
+             id="text1072"><tspan
+               sodipodi:role="line"
+               id="tspan1070"
+               x="170.17607"
+               y="81.400826"
+               style="stroke-width:0.26458332">-21.5dBm: + 10.5dBm</tspan></text>
         </g>
       </g>
     </g>
