@@ -9,6 +9,7 @@ import time
 import spidev
 import adf4360_8
 import sys
+import RPi.GPIO as GPIO
 
 #
 # begin main program
@@ -22,6 +23,8 @@ rf_spi.max_speed_hz = 100000
 rf_pll = adf4360_8.ADF4360()
 do_loop = False
 freq =  200e6
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(25, GPIO.OUT)
 
 # check for command line args
 if(len(sys.argv) > 1) :
@@ -33,18 +36,23 @@ if(len(sys.argv) > 1) :
 
 # program
 if(False == do_loop) :
-    print 'Initialize' 
-    rf_pll.program_init(rf_spi)
+    while True:
+        print 'Initialize' 
+        rf_pll.program_init(rf_spi)
 
-    f_actual = rf_pll.set_freq(freq) 
-    print 'Programming ADF4360_8 to %g MHz' % (f_actual / 1e6)
+        f_actual = rf_pll.set_freq(freq) 
+        print 'Programming ADF4360_8 to %g MHz' % (f_actual / 1e6)
 
-    print 'B value = %d' % (rf_pll.Bcounter)
-    print 'R value = %d' % (rf_pll.Rcounter)
+        print 'B value = %d' % (rf_pll.Bcounter)
+        print 'R value = %d' % (rf_pll.Rcounter)
 
-    rf_pll.program_freq(rf_spi)
+        rf_pll.program_freq(rf_spi)
 
-    time.sleep(0.5)
-else :
-    pass
+        GPIO.output(25, True)
+        time.sleep(30e-9)
+        GPIO.output(25, False)
+
+        time.sleep(0.5)
+    else :
+        pass
 

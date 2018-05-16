@@ -16,7 +16,7 @@ class ADF4360:
         self.mod1 = 1<<24 #24 bit shift register
         
         #Register(Latch) 0 - Control
-        self.corepower = 0
+        self.corepower = 1
         self.countreset = 0
         self.muxout = 0
         self.phasedetpolarity = 1
@@ -30,11 +30,11 @@ class ADF4360:
         self.powerdown2 = 0
         
         #Register(Latch) 1 - N Counter
-        self.Bcounter = 120
+        self.Bcounter = 200
         #This register has cpgain as well
         
         #Register(Latch) 2 - R Counter: Set at 100 for 100kHz resolution
-        self.Rcounter = 100
+        self.Rcounter = 40 
         self.antibacklash = 0
         self.lockdetectprecision = 0
         self.testmode = 0
@@ -52,27 +52,28 @@ class ADF4360:
         fract_B, int_B = math.modf(B)
         print 'fref=%g   freq=%g   pfd=%g   B=%g   int_B=%g   frac_B=%g   rf_vco_div=%d' \
                 % (self.fref, freq, f_pfd, B, int_B, fract_B, self.bandselclockdiv)
+        return self.get_freq()
         
         #Set Bcounter
         self.Bcounter = int(int_B)
         
     def get_freq(self):
-        return self.fref*float(Bcounter)/float(Rcounter)
+        return float(self.fref)*float(self.Bcounter)/float(self.Rcounter)
     
     def encode_registers(self, regnum):
         s = self
         reg = 0
         
         #Control register 0
-        if regnum == 0:
-            reg = ((s.powerdown2 & 1) << 21)|(s.powerdown1 & 1) << 20) | ((s.current2 & 0x7) << 17) | ((s.current1 & 0x7) << 14) \
+        if (regnum == 0):
+            reg = ((s.powerdown2 & 1) << 21)|((s.powerdown1 & 1) << 20) | ((s.current2 & 0x7) << 17) | ((s.current1 & 0x7) << 14) \
             | ((s.rfpowerout & 0x3) << 12) | ((s.mutelockdetect & 1) << 11) | ((s.cpgain & 1) << 10) | ((s.cpout & 1) << 9) \
             | ((s.phasedetpolarity & 1) << 8) | ((s.muxout & 0x7) << 5) | ((s.countreset & 1) << 4) | ((s.corepower & 0x3) << 2) | (regnum)
         #N Counter register 1
-        if regnum == 1:
+        if regnum == 2:
             reg = ((s.cpgain & 1) << 21) | ((s.Bcounter & 0x1fff) << 8) | (regnum)
         #R Counter register 2
-        if regnum == 2:
+        if regnum == 1:
             reg = ((s.bandselclockdiv & 0x3) << 20) | ((s.testmode & 1) << 19) | ((s.lockdetectprecision & 1) << 18) \
             | ((s.antibacklash & 0x3) << 16) | ((s.Rcounter & 0x1fff) << 2) | (regnum)
             
@@ -112,17 +113,14 @@ class ADF4360:
         # program registers to open spi device
     def program_reg(self, regnum, spi_dev ):
         buf = self.encode_registers(regnum)
-        print "programming reg %2d: %02x%02x%02x%02x" % (regnum, buf[0], buf[1], buf[2])
+        print "programming reg %2d: %02x%02x%02x" % (regnum, buf[0], buf[1], buf[2])
         spi_dev.xfer( buf )
         
     def program_init(self, spi_dev):
-        self.countreset = 1
         self.program_reg(2, spi_dev)
         self.program_reg(0, spi_dev)
         self.program_reg(1, spi_dev)
-        self.countreset = 0
         
     def program_freq(self, spi_dev):
-        self.get_freq(freq)
         for i in range(0,3,1):
             self.encode_registers(i)
