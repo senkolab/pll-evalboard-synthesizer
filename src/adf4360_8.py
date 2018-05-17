@@ -44,18 +44,18 @@ class ADF4360:
         fref = self.fref
         #Hold the R counter at a constant
         R = self.Rcounter
-        f_pfd = fref/R
+        f_pfd = fref*4/R
         
-        #What Bcounter is needed for the output freq
-        B = freq*R/fref
+        #What Ncounter is needed for the output freq
+        N = freq*R/fref
+        B = N/4
         
-        fract_B, int_B = math.modf(B)
-        print 'fref=%g   freq=%g   pfd=%g   B=%g   int_B=%g   frac_B=%g   rf_vco_div=%d' \
-                % (self.fref, freq, f_pfd, B, int_B, fract_B, self.bandselclockdiv)
+        fract_N, int_N = math.modf(N)
+        print 'fref=%g   freq=%g   pfd=%g   N=%g   int_N=%g   frac_N=%g   R=%g   B=%g   rf_vco_div=%d' % (fref, freq, f_pfd, N, int_N, fract_N, R, B, self.bandselclockdiv)
         return self.get_freq()
         
         #Set Bcounter
-        self.Bcounter = int(int_B)
+        self.Bcounter = int(B)
         
     def get_freq(self):
         return float(self.fref)*float(self.Bcounter)/float(self.Rcounter)
@@ -99,11 +99,11 @@ class ADF4360:
             s.countreset = (reg >> 4) & 1
             s.corepower = (reg >> 2) & 0x3
         #N Counter register 1
-        if regnum == 1:
+        if regnum == 2:
             s.cpgain = (reg >> 21) & 1
             s.Bcounter = (reg >> 8) & 0x1fff
         #R Counter register 2
-        if regnum == 2:
+        if regnum == 1:
             s.bandselclockdiv = (reg >> 20) & 0x3
             s.testmode = (reg >> 19) & 1
             s.lockdetectprecision = (reg >> 18) & 1

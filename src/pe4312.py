@@ -15,13 +15,13 @@ class PE4312:
         self.atten = 0
         self.parallelorserial = 1
     
-    def setAtten(self, atten):
+    def set_atten(self, atten):
         self.atten = atten
     
-    def getAtten(self):
+    def get_atten(self):
         return self.atten
     
-    def encodeReg(self):
+    def encode_registers(self):
         atten = self.atten
         if atten == 0:
             attnum = 0
@@ -39,12 +39,10 @@ class PE4312:
             attnum = 32
         elif atten == 31.5:
             attnum = 63
-        Reg = (self.parallelorserial & 1)<< 6 | attnum
+        Reg = attnum
         return Reg & 128
     
-    def decodeReg(self, byte):
-        pors = (byte >> 6) & 1
-        self.parallelorserial = pors
+    def decode_registers(self, byte):
         attnum = byte & 0x3f
         if attnum == 0:
             atten = 0
@@ -66,18 +64,12 @@ class PE4312:
     
         # program registers to open spi device
     def program_reg(self, spi_dev ):
-        buf = self.encodeReg()
-        print ("programming reg: ", buf)
+        buf = self.encode_registers()
+        print "programming reg: ", buf
         spi_dev.xfer( buf )
         
     def program_init(self, spi_dev):
-        self.countreset = 1
-        self.program_reg(2, spi_dev)
-        self.program_reg(0, spi_dev)
-        self.program_reg(1, spi_dev)
-        self.countreset = 0
+        self.program_reg(spi_dev)
         
-    def program_freq(self, spi_dev):
-        self.get_freq(freq)
-        for i in range(0,3,1):
-            self.encode_registers(i)
+    def program_atten(self, spi_dev):
+        self.program_reg(spi_dev)

@@ -5,15 +5,16 @@ Created on Sat May 12 14:43:44 2018
 @author: bbramman
 """
 
-import RPi.GPIO as GPIO
+import LatchEnable
 import spidev
 import time
 
 spi = spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz = 7629
+GPIOpin = 25
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(25, GPIO.OUT)
+GPIO.setup(GPIOpin, GPIO.OUT)
 
 # split an integer into two byt array and send to spi
 def write_pot(input):
@@ -24,13 +25,9 @@ def write_pot(input):
 # repeatedly swich on and off
 while True:
     write_pot(0x1ff)
-    GPIO.output(25, True)
-    time.sleep(30e-9)
-    GPIO.output(25, False)
+    LatchEnable(GPIOpin)
     time.sleep(0.5)
     write_pot(0x00)
-    GPIO.output(25, True)
-    time.sleep(30e-9)
-    GPIO.output(25, False)
+    LatchEnable(GPIOpin)
     time.sleep(0.5)
 
