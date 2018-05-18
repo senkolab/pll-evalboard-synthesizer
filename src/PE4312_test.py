@@ -5,7 +5,6 @@ Created on Thu May 17 12:38:05 2018
 @author: bbramman
 """
 
-import LatchEnable
 import spidev
 import sys
 import time
@@ -21,9 +20,10 @@ spi.cshigh = False
 attenuator = pe4312.PE4312()
 do_loop = False
 atten = 31.5 
-GPIOpin = 25
+GPIOpin = 24 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
+GPIO.output(GPIOpin, True)
 
 
 # check for command line args
@@ -38,14 +38,17 @@ if(len(sys.argv) > 1) :
 if(False == do_loop) :
     while True:
         print 'Initialize' 
+        GPIO.output(GPIOpin, False)
         attenuator.program_init(spi)
-
+        GPIO.output(GPIOpin, True)
+        time.wait(100e-6)
         atten_actual = attenuator.set_atten(atten) 
         print 'Programming PE4312 to %g Attenuation' % (atten_actual)
 
+        GPIO.output(GPIOpin, True)
         attenuator.program_atten(spi)
+        GPIO.output(GPIOpin, False)
 
-        LatchEnable.LatchEnable(GPIOpin)
 
         time.sleep(0.5)
     else :

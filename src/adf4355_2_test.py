@@ -27,6 +27,7 @@ rf_pll = adf4355_2.ADF4355(GPIOpin)
 do_loop = False
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
+GPIO.output(GPIOpin, True)
 freq =  250e6 
 
 # check for command line args

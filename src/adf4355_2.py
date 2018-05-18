@@ -9,8 +9,7 @@
 import time
 import spidev
 import math
-import LatchEnable as LE
-
+import RPi.GPIO as GPIO
 class ADF4355:
     # constructor
     def __init__(self, GPIOpin, fref=122.88e6, fspace=100e3):
@@ -267,8 +266,9 @@ class ADF4355:
     def program_reg( self, regnum, spi_dev ):
         buf = self.encode_registers(regnum)
         print "programming reg %2d: %02x%02x%02x%02x" % (regnum, buf[0], buf[1], buf[2], buf[3])
+        GPIO.output(self.GPIOpin, False)
         spi_dev.xfer( buf )
-        LE.LatchEnable(self.GPIOpin)
+        GPIO.output(self.GPIOpin, True)
 
 
     

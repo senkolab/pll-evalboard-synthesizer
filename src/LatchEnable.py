@@ -9,5 +9,6 @@ import time
 
 def LatchEnable(GPIOpin):
     GPIO.output(GPIOpin, True)
-    #time.sleep(500e-6)
+    time.sleep(40e-9)
     GPIO.output(GPIOpin, False)
+    print "Latch Enabled"

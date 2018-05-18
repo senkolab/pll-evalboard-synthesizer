@@ -8,10 +8,12 @@ Created on Fri May 11 15:13:26 2018
 import time
 import spidev
 import math
+import RPi.GPIO as GPIO
 
 class PE4312:
     #Constructor
-    def __init__(self):
+    def __init__(self, GPIOpin):
+        self.GPIOpin = GPIOpin
         self.atten = 0
         self.parallelorserial = 1
     
@@ -70,7 +72,9 @@ class PE4312:
         buf = self.encode_registers()
         buf = [buf]
         print "programming Data:", buf
+        GPIO.output(self.GPIOpin, False)
         spi_dev.xfer( buf )
+        GPIO.output(self.GPIOpin, True)
         
     def program_init(self, spi_dev):
         self.program_reg(spi_dev)

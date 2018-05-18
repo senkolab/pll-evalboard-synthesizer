@@ -8,7 +8,7 @@ Created on Thu Apr 12 13:11:21 2018
 import time
 import spidev
 import math
-import LatchEnable as LE
+import RPi.GPIO as GPIO
 
 class ADF4360:
     #Constructor for ADF4360
@@ -36,7 +36,7 @@ class ADF4360:
         #This register has cpgain as well
         
         #Register(Latch) 2 - R Counter: Set at 100 for 100kHz resolution
-        self.Rcounter = 40 
+        self.Rcounter = 10 
         self.antibacklash = 0
         self.lockdetectprecision = 0
         self.testmode = 0
@@ -50,14 +50,13 @@ class ADF4360:
         
         #What Ncounter is needed for the output freq
         N = freq*R/fref
-        B = N/4
-        
+        B = N 
         fract_N, int_N = math.modf(N)
         print 'fref=%g   freq=%g   pfd=%g   N=%g   int_N=%g   frac_N=%g   R=%g   B=%g   rf_vco_div=%d' % (fref, freq, f_pfd, N, int_N, fract_N, R, B, self.bandselclockdiv)
-        return self.get_freq()
-        
         #Set Bcounter
         self.Bcounter = int(B)
+        return self.get_freq()
+        
         
     def get_freq(self):
         return float(self.fref)*float(self.Bcounter)/float(self.Rcounter)
@@ -117,13 +116,24 @@ class ADF4360:
         buf = self.encode_registers(regnum)
         print "programming reg %2d: %02x%02x%02x" % (regnum, buf[0], buf[1], buf[2])
         spi_dev.xfer( buf )
-        LE.LatchEnable(self.GPIOpin)
         
     def program_init(self, spi_dev):
+        GPIO.output(self.GPIOpin, False)
         self.program_reg(2, spi_dev)
+        GPIO.output(self.GPIOpin, True)
+        time.sleep(400e-6)
+        GPIO.output(self.GPIOpin, False)
         self.program_reg(0, spi_dev)
+        GPIO.output(self.GPIOpin, True)
+        time.sleep(200e-6) 
+        GPIO.output(self.GPIOpin, False)
         self.program_reg(1, spi_dev)
+        GPIO.output(self.GPIOpin, True)
+
         
     def program_freq(self, spi_dev):
         for i in range(0,3,1):
-            self.encode_registers(i)
+            GPIO.output(self.GPIOpin, False)
+            self.program_reg(i, spi_dev)
+            GPIO.output(self.GPIOpin, True)
+            time.sleep(200e-6)

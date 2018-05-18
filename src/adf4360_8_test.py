@@ -27,6 +27,7 @@ freq =  200e6
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
+GPIO.output(GPIOpin, True)
 
 # check for command line args
 if(len(sys.argv) > 1) :
@@ -40,15 +41,19 @@ if(len(sys.argv) > 1) :
 if(False == do_loop) :
     while True:
         print 'Initialize' 
+        GPIO.output(GPIOpin, False)
         rf_pll.program_init(rf_spi)
+        GPIO.output(GPIOpin, True)
+        time.wait(400e-6)
 
         f_actual = rf_pll.set_freq(freq) 
         print 'Programming ADF4360_8 to %g MHz' % (f_actual / 1e6)
 
         print 'B value = %d' % (rf_pll.Bcounter)
         print 'R value = %d' % (rf_pll.Rcounter)
-
+        GPIO.output(GPIOpin, False)
         rf_pll.program_freq(rf_spi)
+        GPIO.output(GPIOpin, True)
 
         time.sleep(0.5)
     else :
