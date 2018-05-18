@@ -7,8 +7,10 @@ Created on Thu May 17 12:38:05 2018
 
 import LatchEnable
 import spidev
+import sys
 import time
 import pe4312
+import RPi.GPIO as GPIO
 
 spi = spidev.SpiDev()
 spi_dev = 0
@@ -16,14 +18,13 @@ spi_cs = 1
 spi.open(spi_dev, spi_cs)
 spi.max_speed_hz = 7629
 spi.cshigh = False 
-atten = pe4312.PE4312()
+attenuator = pe4312.PE4312()
 do_loop = False
-attenuation = 4
-
-
+atten = 31.5 
 GPIOpin = 25
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
+
 
 # check for command line args
 if(len(sys.argv) > 1) :
@@ -37,14 +38,14 @@ if(len(sys.argv) > 1) :
 if(False == do_loop) :
     while True:
         print 'Initialize' 
-        atten.program_init(spi)
+        attenuator.program_init(spi)
 
-        atten_actual = atten.set_atten(atten) 
+        atten_actual = attenuator.set_atten(atten) 
         print 'Programming PE4312 to %g Attenuation' % (atten_actual)
 
-        atten.program_atten(spi)
+        attenuator.program_atten(spi)
 
-        LatchEnable(GPIOpin)
+        LatchEnable.LatchEnable(GPIOpin)
 
         time.sleep(0.5)
     else :

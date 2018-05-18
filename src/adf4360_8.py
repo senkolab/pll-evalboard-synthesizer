@@ -8,10 +8,12 @@ Created on Thu Apr 12 13:11:21 2018
 import time
 import spidev
 import math
+import LatchEnable as LE
 
 class ADF4360:
     #Constructor for ADF4360
-    def __init__(self, fref = 10e6):
+    def __init__(self, GPIOpin, fref = 10e6):
+        self.GPIOpin = GPIOpin 
         self.fref = fref * 1.0  # force float
         self.mod1 = 1<<24 #24 bit shift register
         
@@ -115,6 +117,7 @@ class ADF4360:
         buf = self.encode_registers(regnum)
         print "programming reg %2d: %02x%02x%02x" % (regnum, buf[0], buf[1], buf[2])
         spi_dev.xfer( buf )
+        LE.LatchEnable(self.GPIOpin)
         
     def program_init(self, spi_dev):
         self.program_reg(2, spi_dev)

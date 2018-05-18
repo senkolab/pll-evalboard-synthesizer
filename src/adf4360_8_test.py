@@ -9,7 +9,7 @@ import time
 import spidev
 import adf4360_8
 import sys
-import LatchEnable
+import RPi.GPIO as GPIO
 
 #
 # begin main program
@@ -20,11 +20,11 @@ spi_cs = 1
 rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
-rf_pll = adf4360_8.ADF4360()
+GPIOpin = 25
+rf_pll = adf4360_8.ADF4360(GPIOpin)
 do_loop = False
 freq =  200e6
 
-GPIOpin = 25
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
 
@@ -49,8 +49,6 @@ if(False == do_loop) :
         print 'R value = %d' % (rf_pll.Rcounter)
 
         rf_pll.program_freq(rf_spi)
-
-        LatchEnable(GPIOpin)
 
         time.sleep(0.5)
     else :

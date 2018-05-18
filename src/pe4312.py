@@ -17,6 +17,7 @@ class PE4312:
     
     def set_atten(self, atten):
         self.atten = atten
+        return atten
     
     def get_atten(self):
         return self.atten
@@ -40,7 +41,9 @@ class PE4312:
         elif atten == 31.5:
             attnum = 63
         Reg = attnum
-        return Reg & 128
+        #Need to move over by 2 bits, since SPI protocol does 8 bits, \
+                #but we're sending 6 bits
+        return Reg<<2 
     
     def decode_registers(self, byte):
         attnum = byte & 0x3f
@@ -65,7 +68,8 @@ class PE4312:
         # program registers to open spi device
     def program_reg(self, spi_dev ):
         buf = self.encode_registers()
-        print "programming reg: ", buf
+        buf = [buf]
+        print "programming Data:", buf
         spi_dev.xfer( buf )
         
     def program_init(self, spi_dev):

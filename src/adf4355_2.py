@@ -9,10 +9,12 @@
 import time
 import spidev
 import math
+import LatchEnable as LE
 
 class ADF4355:
     # constructor
-    def __init__(self, fref=122.88e6, fspace=100e3):
+    def __init__(self, GPIOpin, fref=122.88e6, fspace=100e3):
+        self.GPIOpin = GPIOpin
         self.fref = fref * 1.0  # force float
         self.fspace = fspace * 1.0
         self.mod1 = 1 << 24     # fixed modulus: datasheet pg 13
@@ -266,6 +268,7 @@ class ADF4355:
         buf = self.encode_registers(regnum)
         print "programming reg %2d: %02x%02x%02x%02x" % (regnum, buf[0], buf[1], buf[2], buf[3])
         spi_dev.xfer( buf )
+        LE.LatchEnable(self.GPIOpin)
 
 
     
