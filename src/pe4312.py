@@ -26,46 +26,15 @@ class PE4312:
     
     def encode_registers(self):
         atten = self.atten
-        if atten == 0:
-            attnum = 0
-        elif atten == 0.5:
-            attnum = 1
-        elif atten == 1:
-            attnum = 2
-        elif atten == 2:
-            attnum = 4
-        elif atten == 4:
-            attnum = 8
-        elif atten == 8:
-            attnum = 16 
-        elif atten == 16:
-            attnum = 32
-        elif atten == 31.5:
-            attnum = 63
-        Reg = attnum
-        #Need to move over by 2 bits, since SPI protocol does 8 bits, \
-                #but we're sending 6 bits
-        return Reg<<2 
+        att = int(math.floor(atten*2))
+        print(att)
+        Reg = att
+        return Reg
     
     def decode_registers(self, byte):
         attnum = byte & 0x3f
-        if attnum == 0:
-            atten = 0
-        elif attnum == 1:
-            atten = 0.5
-        elif attnum == 2:
-            atten = 1
-        elif attnum == 4:
-            atten = 2
-        elif attnum == 8:
-            atten = 4
-        elif attnum == 16:
-            atten = 8
-        elif attnum == 32:
-            atten = 16
-        elif attnum == 63:
-            atten = 31.5
-        self.atten = atten
+        att = attnum/2
+        self.atten = att
     
         # program registers to open spi device
     def program_reg(self, spi_dev ):
