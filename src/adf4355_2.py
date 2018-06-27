@@ -279,6 +279,7 @@ class ADF4355:
         for n in range(12, -1, -1) :
             self.program_reg(n, spi_dev)
         self.counter_reset = 0
+        GPIO.output(self.GPIOpin, True)
      
     #
     # program a new frequency
