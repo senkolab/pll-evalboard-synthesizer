@@ -17,10 +17,10 @@ spi_cs = 1
 spi.open(spi_dev, spi_cs)
 spi.max_speed_hz = 7629
 spi.cshigh = False 
-attenuator = pe4312.PE4312()
+GPIOpin = 18 
+attenuator = pe4312.PE4312(GPIOpin)
 do_loop = False
-atten = 31.5 
-GPIOpin = 24 
+atten = 0 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
 GPIO.output(GPIOpin, True)
@@ -47,7 +47,6 @@ if(False == do_loop) :
 
         GPIO.output(GPIOpin, True)
         attenuator.program_atten(spi)
-        GPIO.output(GPIOpin, False)
 
 
         time.sleep(0.5)
