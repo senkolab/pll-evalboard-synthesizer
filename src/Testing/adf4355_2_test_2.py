@@ -42,7 +42,7 @@ GPIO.output(GPIOpin2, True)
 GPIO.output(GPIOpin3, True)
 freq1 = 350e6 
 freq2 = 431e6 
-atten = 31.5 
+atten = 1.5 
 #freq3 = 431e6
 
 # check for command line args
