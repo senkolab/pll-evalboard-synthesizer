@@ -53,7 +53,9 @@ if(False == do_loop):
     atten_actual = attenuator.set_atten(atten)
 
     print 'Programming ADF41020 to %g MHz' % (f_actual / 1e6)
-
+    print 'R value = %d' % (rf_pll.R)
+    print 'B value = %d' % (rf_pll.B)
+    print 'A value = %d' % (rf_pll.A)
     rf_pll.program_freq(rf_spi)
 
     time.sleep(1)
