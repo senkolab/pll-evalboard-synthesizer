@@ -1,7 +1,0 @@
-#!/bin/sh
-# PLL programmer
-#
-# Programs a PLL chip
-echo "Starting PLL programmer"
-exec python /home/pi/pll-evalboard-synthesizer/src/pll_program.py &
-
