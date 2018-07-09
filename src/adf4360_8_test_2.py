@@ -23,7 +23,7 @@ rf_spi.max_speed_hz = 100000
 GPIOpin = 25
 rf_pll = adf4360_8.ADF4360(GPIOpin)
 do_loop = False
-freq =  200e6
+freq = 200e6 
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)

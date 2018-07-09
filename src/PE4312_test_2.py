@@ -20,7 +20,7 @@ spi.cshigh = False
 GPIOpin = 24 
 attenuator = pe4312.PE4312(GPIOpin)
 do_loop = False
-atten = 23 
+atten = 4
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
 GPIO.output(GPIOpin, True)
