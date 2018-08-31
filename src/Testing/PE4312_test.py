@@ -23,7 +23,7 @@ do_loop = False
 atten = 0 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
-GPIO.output(GPIOpin, True)
+GPIO.output(GPIOpin, False)
 
 
 # check for command line args
@@ -38,14 +38,13 @@ if(len(sys.argv) > 1) :
 if(False == do_loop) :
     while True:
         print 'Initialize' 
-        GPIO.output(GPIOpin, False)
+        #GPIO.output(GPIOpin, False)
         attenuator.program_init(spi)
-        GPIO.output(GPIOpin, True)
-        time.wait(100e-6)
+        #GPIO.output(GPIOpin, True)
         atten_actual = attenuator.set_atten(atten) 
         print 'Programming PE4312 to %g Attenuation' % (atten_actual)
 
-        GPIO.output(GPIOpin, True)
+        #GPIO.output(GPIOpin, True)
         attenuator.program_atten(spi)
 
 

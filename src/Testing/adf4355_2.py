@@ -60,7 +60,7 @@ class ADF4355:
         self.rf_divider_select = 2      # eval board default: div-by-4
         self.cp_bleed_current = 12      # 12x3.75uA = 45uA
         self.mtld = 0                   # disabled
-        self.auxrf_output_enable = 1    # enabled
+        self.auxrf_output_enable = 0    # enabled
         self.auxrf_output_power = 1     # eval board default -1dBm
         self.rf_output_enable = 1       # enabled
         self.rf_output_power = 3        # +5dBm

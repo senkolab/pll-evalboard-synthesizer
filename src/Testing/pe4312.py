@@ -41,9 +41,14 @@ class PE4312:
         buf = self.encode_registers()
         buf = [buf]
         print "programming Data:", buf
+        GPIO.output(self.GPIOpin, True)
+        time.sleep(10e-6)
         GPIO.output(self.GPIOpin, False)
         spi_dev.xfer( buf )
+        time.sleep(10e-6)
         GPIO.output(self.GPIOpin, True)
+        time.sleep(10e-6)
+        GPIO.output(self.GPIOpin, False)
         
     def program_init(self, spi_dev):
         self.program_reg(spi_dev)
