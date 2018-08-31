@@ -36,18 +36,18 @@ if(len(sys.argv) > 1) :
 
 # program
 if(False == do_loop) :
-    while True:
-        print 'Initialize' 
-        #GPIO.output(GPIOpin, False)
-        attenuator.program_init(spi)
-        #GPIO.output(GPIOpin, True)
-        atten_actual = attenuator.set_atten(atten) 
-        print 'Programming PE4312 to %g Attenuation' % (atten_actual)
+#while True:
+    print 'Initialize' 
+    #GPIO.output(GPIOpin, False)
+    attenuator.program_init(spi)
+    #GPIO.output(GPIOpin, True)
+    atten_actual = attenuator.set_atten(atten) 
+    print 'Programming PE4312 to %g Attenuation' % (atten_actual)
 
-        #GPIO.output(GPIOpin, True)
-        attenuator.program_atten(spi)
+    #GPIO.output(GPIOpin, True)
+    attenuator.program_atten(spi)
 
 
-        time.sleep(0.5)
-    else :
-        pass
+    time.sleep(0.5)
+else :
+    pass
