@@ -29,10 +29,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.41567602"
-     inkscape:cx="713.53036"
+     inkscape:cx="273.28365"
      inkscape:cy="283.53458"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1618"
      inkscape:window-height="1027"
@@ -51,6 +51,18 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <rect
+       style="fill:#ffffff;stroke:none;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.9954955;fill-opacity:1;opacity:0.97"
+       id="rect1180"
+       width="406.09552"
+       height="511.75671"
+       x="-82.110214"
+       y="-19.347132" />
+  </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
