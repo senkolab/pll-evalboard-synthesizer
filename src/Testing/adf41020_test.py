@@ -24,17 +24,17 @@ spi_cs = 1
 rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
-GPIOpin1 = 17
+GPIOpin1 = 4 
 GPIOpin2 = 24
 rf_pll = adf41020_2.ADF41020(GPIOpin1)
 attenuator = pe4312.PE4312(GPIOpin2) 
 do_loop = False
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin1, GPIO.OUT)
-GPIO.output(GPIOpin1, True)
-GPIO.setup(GPIOpin2, GPIO.OUT)
-GPIO.output(GPIOpin2, True)
-freq = 10e9 
+#GPIO.output(GPIOpin1, False)
+#GPIO.setup(GPIOpin2, GPIO.OUT)
+#GPIO.output(GPIOpin2, True)
+freq = 7e9 
 atten = 1 
 
 # check for command line args
@@ -47,10 +47,10 @@ if(len(sys.argv) > 1) :
 
 # program
 if(False == do_loop):
-    attenuator.program_init(rf_spi)
+    #attenuator.program_init(rf_spi)
 
     f_actual = rf_pll.set_freq(freq) 
-    atten_actual = attenuator.set_atten(atten)
+    #atten_actual = attenuator.set_atten(atten)
 
     print 'Programming ADF41020 to %g MHz' % (f_actual / 1e6)
     print 'R value = %d' % (rf_pll.R)
@@ -60,9 +60,9 @@ if(False == do_loop):
 
     time.sleep(1)
     
-    attenuator.program_atten(rf_spi)
+    #attenuator.program_atten(rf_spi)
 
-    time.sleep(2)
+    #time.sleep(2)
 else :
     pass
 

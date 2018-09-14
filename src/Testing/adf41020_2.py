@@ -33,7 +33,7 @@ class ADF41020:
         self.fastlock_mode = 0
         self.fastlock_enable = 0
         self.cp_tristate = 0
-        self.pd_polarity = 1    # eval board default
+        self.pd_polarity = 0    # eval board default
         self.muxout = 0
         self.powerdown1 = 0
         self.counter_reset = 0
@@ -122,15 +122,22 @@ class ADF41020:
     
     # program registers to open spi device
     def program_reg( self, regnum, spi_dev ):
-        GPIO.output(self.GPIOpin, False) 
+        #GPIO.output(self.GPIOpin, False) 
+        print('Printing register:', regnum)
+        print('Data', self.encode_register(regnum))
         spi_dev.xfer( self.encode_register(regnum) )
         GPIO.output(self.GPIOpin, True)
+        time.sleep(1e-7)
+        GPIO.output(self.GPIOpin, False)
 
     def program_freq(self, spi_dev):
-        self.counter_reset = 1
-        self.program_reg(2, spi_dev)
+        #self.counter_reset = 1
+        #self.program_reg(2, spi_dev)
+        time.sleep(4e-3)
         self.program_reg(0, spi_dev)
+        time.sleep(4e-3)
         self.program_reg(1, spi_dev)
+        time.sleep(4e-3)
         self.counter_reset = 0
         self.program_reg(2, spi_dev)
          
