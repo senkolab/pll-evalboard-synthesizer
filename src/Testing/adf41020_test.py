@@ -34,7 +34,7 @@ GPIO.setup(GPIOpin1, GPIO.OUT)
 #GPIO.output(GPIOpin1, False)
 #GPIO.setup(GPIOpin2, GPIO.OUT)
 #GPIO.output(GPIOpin2, True)
-freq = 7e9 
+freq = 8.037e9 
 atten = 1 
 
 # check for command line args

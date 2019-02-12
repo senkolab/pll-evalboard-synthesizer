@@ -58,7 +58,7 @@ class ADF4355:
         self.negative_bleed = 1         # enabled 
         self.feedback_select = 1        # fundamental
         self.rf_divider_select = 2      # eval board default: div-by-4
-        self.cp_bleed_current = 12      # 12x3.75uA = 45uA
+        self.cp_bleed_current = 9      # 12x3.75uA = 45uA
         self.mtld = 0                   # disabled
         self.auxrf_output_enable = 0    # enabled
         self.auxrf_output_power = 1     # eval board default -1dBm
@@ -68,8 +68,8 @@ class ADF4355:
         # register 7
         self.le_sync = 1                # eval board default: enabled
         self.ld_cycle_count = 0         # eval board default: 1024 cycles
-        self.lol_mode = 0               # disabled
-        self.frac_n_ld_precision = 0    # eval board default: 5ns
+        self.lol_mode = 1               # disabled
+        self.frac_n_ld_precision = 3    # eval board default: 5ns
         self.ld_mode = 0                # fractional-n
 
         # register 8
@@ -92,6 +92,15 @@ class ADF4355:
         # register 12
         self.resync_clock = 1
 
+    def hcf(self, a, b):
+        if a > b:
+            small = b
+        else:
+            small = a
+        for i in range(1, small+1):
+            if ((a%i == 0) and (b % i == 0)):
+                hcf = i
+        return hcf 
 
     # get the ouptut divider ratio
     #   ref adf4355-2 datasheet page 25
@@ -118,6 +127,7 @@ class ADF4355:
         f_vco = freq * div_out
         N = f_vco / f_pfd
 
+
         fract_N, int_N = math.modf(N)
         print 'fref=%g   freq=%g   div=%d   pfd=%g   vco=%g   N=%g   int_N=%g   frac_N=%g   rf_div_sel=%d' \
                 % (self.fref, freq, div_out, f_pfd, f_vco, N, int_N, fract_N, self.rf_divider_select)
@@ -129,7 +139,10 @@ class ADF4355:
         self.intval = int(int_N)
         self.frac1 = int(math.floor(fract_N * self.mod1))  # frac1 = remainder * 2^24
         self.frac2 = 0
+        #print(self.hcf(f_pfd, self.fspace))
+        #self.mod2 = int(f_pfd/(self.hcf(int(f_pfd), int(self.fspace))))
         self.mod2 = 1536    # default from evb programming software
+        #self.frac2 = int(((N - self.intval)*2**24-self.frac1)*self.mod2)
         return self.get_freq()
 
     #
@@ -164,7 +177,7 @@ class ADF4355:
                   | ((s.ref_mode & 1) << 9) | ((s.mux_logic & 1) << 8) | ((s.pd_polarity & 1) << 7) \
                   | ((s.pd & 1) << 6) | ((s.cp_tristate & 1) << 5) | ((s.counter_reset & 1) << 4)  | regnum
         if( regnum == 5 ):
-            reg = (1 << 23) | (regnum)
+            reg = (1 << 23) | (1 <<5) |(regnum)
         if( regnum == 6 ):
             reg = ((s.gated_bleed & 1) << 30) | ((s.negative_bleed & 1) << 29) | (0xa << 25) \
                   | ((s.feedback_select & 1) << 24) | ((s.rf_divider_select & 0x7) << 21) \
@@ -269,6 +282,7 @@ class ADF4355:
         GPIO.output(self.GPIOpin, False)
         spi_dev.xfer( buf )
         GPIO.output(self.GPIOpin, True)
+        time.sleep(200e-6)
 
 
     
@@ -279,12 +293,13 @@ class ADF4355:
         for n in range(12, -1, -1) :
             self.program_reg(n, spi_dev)
         self.counter_reset = 0
-        GPIO.output(self.GPIOpin, True)
+        #GPIO.output(self.GPIOpin, True)
      
     #
     # program a new frequency
     def program_freq(self, spi_dev) :
         self.counter_reset = 1
+        self.program_reg(10, spi_dev)
         self.program_reg(6, spi_dev)
         self.program_reg(4, spi_dev)
         self.program_reg(2, spi_dev)
