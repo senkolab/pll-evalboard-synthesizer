@@ -23,9 +23,9 @@ spi_cs = 1
 rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
+
 GPIOpin1 = 5
-GPIOpin2 = 18
-GPIOpin3 = 24
+freq1 = 200e6
 
 rf_pll_1 = adf4355_2.ADF4355(GPIOpin1)
 #rf_pll_2 = adf4355_2.ADF4355(GPIOpin2)
@@ -40,9 +40,7 @@ GPIO.setup(GPIOpin1, GPIO.OUT)
 GPIO.output(GPIOpin1, True)
 #GPIO.output(GPIOpin2, True)
 #GPIO.output(GPIOpin3, True)
-freq1 = 614e6 
-freq2 = 431e6 
-atten = 1.5 
+freq1 = 200e6 
 #freq3 = 431e6
 
 # check for command line args
