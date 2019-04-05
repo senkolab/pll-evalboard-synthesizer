@@ -23,6 +23,8 @@ spi_cs = 1
 rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
+
+#This program sets frequencies and attenuations of all three rf lines
 GPIOpin1 = 4
 GPIOpin2 = 5
 GPIOpin3 = 6
@@ -30,6 +32,14 @@ GPIOpin3 = 6
 GPIOpin4 = 12
 GPIOpin5 = 13
 GPIOpin6 = 16
+
+freq1 = 394e6 
+freq2 = 539e6 
+freq3 = 614e6
+
+atten1 = 0
+atten2 = 0
+atten3 = 0
 
 rf_pll_1 = adf4355_2.ADF4355(GPIOpin1)
 rf_pll_2 = adf4355_2.ADF4355(GPIOpin2)
@@ -59,13 +69,6 @@ GPIO.output(GPIOpin4, True)
 GPIO.output(GPIOpin5, True)
 GPIO.output(GPIOpin6, True)
 
-freq1 = 394e6 
-freq2 = 539e6 
-freq3 = 614e6
-
-atten1 = 0
-atten2 = 0
-atten3 = 0
 
 # check for command line args
 if(len(sys.argv) > 1) :

@@ -24,6 +24,7 @@ rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
 
+#This program sets the frequency of one PLL connected to this pin
 GPIOpin1 = 5
 freq1 = 200e6
 
@@ -40,7 +41,6 @@ GPIO.setup(GPIOpin1, GPIO.OUT)
 GPIO.output(GPIOpin1, True)
 #GPIO.output(GPIOpin2, True)
 #GPIO.output(GPIOpin3, True)
-freq1 = 200e6 
 #freq3 = 431e6
 
 # check for command line args

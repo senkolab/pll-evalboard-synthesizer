@@ -24,18 +24,19 @@ spi_cs = 1
 rf_spi.open(spidev, spi_cs)
 rf_spi.cshigh = False 
 rf_spi.max_speed_hz = 100000
+
+#This program sets the frequency of one pll connected to this pin
 GPIOpin1 = 4 
-GPIOpin2 = 24
+freq = 8.037e9 
+
+
 rf_pll = adf41020_2.ADF41020(GPIOpin1)
-attenuator = pe4312.PE4312(GPIOpin2) 
 do_loop = False
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin1, GPIO.OUT)
 #GPIO.output(GPIOpin1, False)
 #GPIO.setup(GPIOpin2, GPIO.OUT)
 #GPIO.output(GPIOpin2, True)
-freq = 8.037e9 
-atten = 1 
 
 # check for command line args
 if(len(sys.argv) > 1) :
