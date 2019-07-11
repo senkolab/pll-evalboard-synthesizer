@@ -26,16 +26,13 @@ rf_spi.max_speed_hz = 100000
 
 #This program sets the frequency of one PLL connected to this pin
 GPIOpin1 = 5
-freq1 = 200e6
-
-# check for command line args
-if(len(sys.argv) > 1) :
-    try:
-        GPIOpin1 = int(sys.argv[1])
-        freq = float(sys.argv[2])
-    except ValueError:
-        if(sys.argv[1] == "loop"):
-            do_loop = True
+#Set the current laser frequency: should be locked by wavemeter
+LaserFreq = 430e12
+#Set the overall sweep you want. Make sure the filter on the line isn't too low. The adf4355
+FreqStart = 430.000200e12
+FreqStop = 430.000400e12
+SweepStep = 1e6
+StepTime = 30
 
 rf_pll_1 = adf4355_2.ADF4355(GPIOpin1)
 
@@ -45,13 +42,26 @@ GPIO.setup(GPIOpin1, GPIO.OUT)
 
 GPIO.output(GPIOpin1, True)
 
+# check for command line args
+if(len(sys.argv) > 1) :
+    try:
+        freq = float(sys.argv[1])
+    except ValueError:
+        if(sys.argv[1] == "loop"):
+            do_loop = True
+
 # program
-if(False == do_loop) :
-
-    print 'Initialize' 
+Freq = FreqStart
+while Freq <= FreqStop:
+    print'Initialize' 
     rf_pll_1.program_init(rf_spi)
+#    rf_pll_2.program_init(rf_spi)
+#    rf_atten.program_init(rf_spi)
 
-    f_actual_1 = rf_pll_1.set_freq(freq1) 
+    f_actual_1 = rf_pll_1.set_freq(Freq) 
+#    f_actual_2 = rf_pll_2.set_freq(freq2) 
+#    atten_actual = rf_atten.set_atten(atten)
+    #f_actual_3 = rf_pll_3.set_freq(freq3) 
     print 'Programming ADF4355-2_1 to %g MHz' % (f_actual_1 / 1e6)
     print 'R value = %d' % (rf_pll_1.r)
     print 'INT value = %d' % (rf_pll_1.intval)
@@ -59,8 +69,5 @@ if(False == do_loop) :
     print 'FRAC2 value = %d' % (rf_pll_1.frac2)
     print 'MOD2 value = %d' % (rf_pll_1.mod2)
     rf_pll_1.program_freq(rf_spi)
-    time.sleep(1)
-
-else :
-    pass
-
+    Freq = FreqStart + SweepStep
+    time.sleep(StepTime)

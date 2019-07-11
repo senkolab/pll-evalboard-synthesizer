@@ -17,22 +17,25 @@ spi_cs = 1
 spi.open(spi_dev, spi_cs)
 spi.max_speed_hz = 7629
 spi.cshigh = False 
-GPIOpin = 4 
-attenuator = pe4312.PE4312(GPIOpin)
 do_loop = False
+GPIOpin = 4 
 atten = 25 
+
+# check for command line args
+if(len(sys.argv) > 1) :
+    try:
+        GPIOpin = int(sys.argv[1])
+        atten = float(sys.argv[2])
+    except ValueError:
+        if(sys.argv[1] == "loop"):
+            do_loop = True
+            
+attenuator = pe4312.PE4312(GPIOpin)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin, GPIO.OUT)
 GPIO.output(GPIOpin, False)
 
 
-# check for command line args
-if(len(sys.argv) > 1) :
-    try:
-        atten = float(sys.argv[1])
-    except ValueError:
-        if(sys.argv[1] == "loop"):
-            do_loop = True
 
 # program
 if(False == do_loop) :
