@@ -30,6 +30,15 @@ GPIOpin1 = 4
 freq = 8.037e9 
 
 
+# check for command line args
+if(len(sys.argv) > 1) :
+    try:
+        GPIOpin1 = int(sys.argv[1])
+        freq = float(sys.argv[2])
+    except ValueError:
+        if(sys.argv[1] == "loop"):
+            do_loop = True
+            
 rf_pll = adf41020_2.ADF41020(GPIOpin1)
 do_loop = False
 GPIO.setmode(GPIO.BCM)
@@ -37,14 +46,6 @@ GPIO.setup(GPIOpin1, GPIO.OUT)
 #GPIO.output(GPIOpin1, False)
 #GPIO.setup(GPIOpin2, GPIO.OUT)
 #GPIO.output(GPIOpin2, True)
-
-# check for command line args
-if(len(sys.argv) > 1) :
-    try:
-        freq = float(sys.argv[1])
-    except ValueError:
-        if(sys.argv[1] == "loop"):
-            do_loop = True
 
 # program
 if(False == do_loop):

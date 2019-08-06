@@ -30,9 +30,23 @@ GPIOpin1 = 5
 LaserFreq = 430e12
 #Set the overall sweep you want. Make sure the filter on the line isn't too low. The adf4355
 FreqStart = 430.000200e12
-FreqStop = 430.000400e12
+FreqStop = 430.000300e12
 SweepStep = 1e6
 StepTime = 30
+
+
+# check for command line args
+if(len(sys.argv) > 1) :
+    try:
+        GPIOpin1 = int(sys.argv[1])
+        LaserFreq = float(sys.argv[2])
+        FreqStart = float(sys.argv[3])
+        FreqStop = float(sys.argv[4])
+        SweepStep = float(sys.argv[5])
+        StepTime = float(sys.argv[6])
+    except ValueError:
+        if(sys.argv[1] == "loop"):
+            do_loop = True
 
 rf_pll_1 = adf4355_2.ADF4355(GPIOpin1)
 
@@ -41,14 +55,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIOpin1, GPIO.OUT)
 
 GPIO.output(GPIOpin1, True)
-
-# check for command line args
-if(len(sys.argv) > 1) :
-    try:
-        freq = float(sys.argv[1])
-    except ValueError:
-        if(sys.argv[1] == "loop"):
-            do_loop = True
 
 # program
 Freq = FreqStart
