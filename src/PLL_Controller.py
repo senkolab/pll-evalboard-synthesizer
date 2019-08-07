@@ -93,7 +93,7 @@ class PllController:
         print('AOM frequency changed to %s' % freq)
         return freq
     
-    def sweep_frequency(self, laser, start, end, step_size, time):
+    def sweep_freq(self, laser, start, end, step_size, time):
         '''
         Sweeps the frequency of the aome corresponding to the laser from
         start to end.
@@ -135,7 +135,7 @@ class PllShell(cmd.Cmd):
     l_650nm_freq = -1
     intro = ('Pll Controller: Type "help" or "? <command>" for help\n'
              'Open a connection to the relevant pi using "connect piX"')
-    prompt = ('======================================\n'
+    prompt = ('============================================================\n'
               '>')
     file = None
 
@@ -185,6 +185,9 @@ class PllShell(cmd.Cmd):
         else:
             print('Needs both setting and desired value, e.g: "freq" "200"')
             pass
+    
+    def sweep_freq(self, laser, cmd):
+        pass
 
     # User triggerable commands
     def do_ping(self, arg):
@@ -218,7 +221,10 @@ class PllShell(cmd.Cmd):
     
     def do_493nm(self, arg):
         # Both this and do_650nm are semi-redundant, could be compacted
-        'Does things to the 493nm cooling laser. Syntax: "493nm" "attn" "25"'
+        '''
+        Does things to the 493nm cooling laser. 
+        Syntax: "493nm attn "25" or "493nm freq 150"
+        '''
         cmd = self.parse(arg)
         laser = '493nm'
         try:
@@ -226,6 +232,8 @@ class PllShell(cmd.Cmd):
                 self.change_attn(laser, cmd)
             elif cmd[0] == 'freq':
                 self.change_freq(laser, cmd)
+            elif cmd[0] == 'sweep':
+                self.sweep_freq(laser, cmd)
             else:
                 pass
         except:
@@ -241,6 +249,8 @@ class PllShell(cmd.Cmd):
                 self.change_attn(laser, cmd)
             elif cmd[0] == 'freq':
                 self.change_freq(laser, cmd)
+            elif cmd[0] == 'sweep':
+                self.sweep_freq(laser, cmd)
             else:
                 pass
         except:
@@ -266,9 +276,14 @@ class PllShell(cmd.Cmd):
         'Prints the current attenuation settings for the 493nm and 650nm lasers.'
         c = self.l_493nm_attn
         r = self.l_650nm_attn
-        print('The current attenuation settings are:')
-        print('493nm Cooling: %s' % c)
-        print('650nm Repump: %s' % r)
+        c_aom = self.l_493nm_freq
+        r_aom = self.l_650nm_freq
+        print('The current attenuation and frequency settings are:\n')
+        print('493nm cooling attenuatoin: %s' % c)
+        print('493nm cooling AOM frequency: %s' % c_aom)
+        print('650nm repump attenuation: %s' % r)
+        print('650nm repump AOM frequency: %s' % r_aom)
+        print('')
 
     def do_check_connection(self, arg):
         "Checks to see if there's a connection to pi3"
