@@ -16,6 +16,10 @@ class PllController:
     # Command to run Brendan's attenuation adjustment program once connected
     change_attn_command = ('python /home/pi/pll-evalboard-synthesizer'
                            '/src/Control-Programs/att1.py %s \n')
+    change_freq_command =('python /home/pi/pll-evalboard-synthesizer'
+                           '/src/Control-Programs/rf1.py %s \n')
+    sweep_freq_command = ('python /home/pi/pll-evalboard-synthesizer'
+                           '/src/Control-Programs/rf1_sweep.py %s \n')
     # Dictionaries conataining info on the pis and the laser pins + functions
     # Frequencies are in MHz
     pi_database = {
@@ -36,15 +40,16 @@ class PllController:
             'freq':{
                 '493nm':{
                     'pin':'4',
-                    'val':'200'
+                    'val':'-1'
                 },
                 '650nm':{
-                    'pin':'4',
-                    'val':'?'
+                    'pin':'6',
+                    'val':'-1'
                 }
             }
         }
     }   
+
     def __init__(self, name):
         # Initiate everything and setup a connection to the named pi
         self.name = name
@@ -77,6 +82,42 @@ class PllController:
         print('Attentuation changed to %s' % level)
         return level
     
+    def change_freq(self, laser, freq):
+        'Changes the frequency of the aom corresponding to the laser.'
+        function = 'freq'
+        pin = self.pi_database[self.name][function][laser]['pin']
+        command = self.change_freq_command % (pin + ' ' + freq)
+        self.sp.stdin.write(command)
+        time.sleep(0.75)
+        self.pi_database[self.name][function][laser]['val'] = freq
+        print('AOM frequency changed to %s' % freq)
+        return freq
+    
+    def sweep_frequency(self, laser, start, end, step_size, time):
+        '''
+        Sweeps the frequency of the aome corresponding to the laser from
+        start to end.
+        '''
+        freq_range = end - start
+        if (freq_range) >= 0:
+            function = 'freq'
+            step_time = time / (freq_range / step_size)
+            if step_time < 1:
+                step_time = 1
+            pin = self.pi_database[self.name][function][laser]['pin']
+            args = (pin + ' '
+                + start + ' '
+                + end + ' '
+                + step_size + ' '
+                + step_time)
+            command = self.sweep_freq_command % (args)
+            self.sp.stdin.write(command)
+            time.sleep(time + 0.75)
+            self.pi_database[self.name][function][laser]['val'] = end
+            return end
+        else:
+            pass
+
     def terminate(self):
         # Exits the session and kills the subprocess just in case
         self.sp.stdin.write('exit \n')
@@ -90,8 +131,10 @@ class PllShell(cmd.Cmd):
     # Startup paramaters and parateters to keep track of attentuation for the CLI
     l_493nm_attn = -1
     l_650nm_attn = -1
+    l_493nm_freq = -1
+    l_650nm_freq = -1
     intro = ('Pll Controller: Type "help" or "? <command>" for help\n'
-             'Open a connection to the relevant pi using "connect"')
+             'Open a connection to the relevant pi using "connect piX"')
     prompt = ('======================================\n'
               '>')
     file = None
@@ -126,6 +169,21 @@ class PllShell(cmd.Cmd):
             # print('')
         else:
             print('Needs both setting and desired value, e.g: "attn" "25"')
+            pass
+    
+    def change_freq(self, laser, cmd):
+        "Changes the frequency assosiated with the specified laser's aom"
+        if len(cmd) == 2:
+            level = self.pi3.change_freq(laser, cmd[1])
+            if laser == '493nm':
+                self.l_493nm_freq = level
+            elif laser == '650nm':
+                self.l_650nm_freq = level
+            else:
+                print('Laser not recognized...')
+            # print('')
+        else:
+            print('Needs both setting and desired value, e.g: "freq" "200"')
             pass
 
     # User triggerable commands
@@ -166,6 +224,8 @@ class PllShell(cmd.Cmd):
         try:
             if cmd[0] == 'attn':
                 self.change_attn(laser, cmd)
+            elif cmd[0] == 'freq':
+                self.change_freq(laser, cmd)
             else:
                 pass
         except:
@@ -179,6 +239,8 @@ class PllShell(cmd.Cmd):
         try:
             if cmd[0] == 'attn':
                 self.change_attn(laser, cmd)
+            elif cmd[0] == 'freq':
+                self.change_freq(laser, cmd)
             else:
                 pass
         except:
