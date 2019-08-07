@@ -14,26 +14,35 @@ class PllController:
     init_cmd = 'plink -ssh %s@%s -pw %s -batch'
     # Command to run Brendan's attenuation adjustment program once connected
     change_attn_command = ('python /home/pi/pll-evalboard-synthesizer'
-                           '/src/Testing/test_PE4312.py %s \n')
+                           '/src/Control-Programs/att1.py %s \n')
     # Dictionaries conataining info on the pis and the laser pins + functions
     pi_database = {
         'pi3':{
             'ip': '192.168.168.103',
             'usr': 'pi',
             'pwd': 'raspberry',
-            '493nm':{
-                'pin':'12',
-                'attn':'-1',
-                'func':'Cool & Measure'
+            'attn':{
+                '493nm':{
+                    'pin':'12',
+                    'val':'-1'
+                },
+                '650nm':{
+                    'pin':'16',
+                    'val':'-1'
+                }
             },   
-            '650nm':{
-                'pin':'16',
-                'attn':'-1',
-                'func':'Repump'
+            'freq':{
+                '493nm':{
+                    'pin':'12',
+                    'val':'?'
+                },
+                '650nm':{
+                    'pin':'4',
+                    'val':'?'
+                }
             }
         }
-    }
-
+    }   
     def __init__(self, name):
         # Initiate everything and setup a connection to the named pi
         self.name = name
@@ -56,12 +65,13 @@ class PllController:
 
     def change_attn(self, laser, level):
         # Changes the attentuation using Brendan's script on the pi
-        pin = self.pi_database[self.name][laser]['pin']
+        function = 'attn'
+        pin = self.pi_database[self.name][function][laser]['pin']
         command = self.change_attn_command % (pin + ' ' + level)
         # print(command)
         self.sp.stdin.write(command)
         time.sleep(0.75)
-        self.pi_database[self.name][laser]['attn'] = level
+        self.pi_database[self.name][function][laser]['val'] = level
         print('Attentuation changed to %s' % level)
         return level
     
@@ -79,8 +89,7 @@ class PllShell(cmd.Cmd):
     l_493nm_attn = -1
     l_650nm_attn = -1
     intro = ('Pll Controller: Type "help" or "? <command>" for help\n'
-             'Open a connection to the relevant pi using "connect"\n'
-             '(Currently only connects to pi3)')
+             'Open a connection to the relevant pi using "connect"')
     prompt = ('======================================\n'
               '>')
     file = None
@@ -91,18 +100,21 @@ class PllShell(cmd.Cmd):
         'Split the input argument into a tuple.'
         return tuple(arg.split())
     
-    def ping(self):
-        'Pings pi3 currently, can be easily changed to ping whatever.'
-        cmd = 'ping -n 1 192.168.168.103'
-        result = subprocess.run(cmd)
-        return result.returncode
+    def ping(self, arg):
+        'Pings pi of interest.'
+        try:
+            cmd = 'ping -n 1 %s' % (PllController.pi_database[arg]['ip']) 
+            result = subprocess.run(cmd)
+            return result.returncode
+        except:
+            return 1
 
     def change_attn(self, laser, cmd):
         'Changes the attenuation of the specified laser'
         # Should have 'attn' and desired value only
         if len(cmd) == 2:
-            level = self.pi3.change_attn(laser,cmd[1])
-            self.pi3.pi_database['pi3'][laser][cmd[0]] = level
+            level = self.pi3.change_attn(laser, cmd[1])
+            # self.pi3.pi_database['pi3']['attn'][laser][cmd[0]] = level
             if laser == '493nm':
                 self.l_493nm_attn = level
             elif laser == '650nm':
@@ -116,8 +128,10 @@ class PllShell(cmd.Cmd):
 
     # User triggerable commands
     def do_ping(self, arg):
-        'Pings pi3.'
-        self.ping()
+        'Pings pi of interest.'
+        name = self.parse(arg)[0]
+        print(name)
+        self.ping(name)
 
     def do_test(self, arg):
         'Prints Testing'
@@ -125,6 +139,15 @@ class PllShell(cmd.Cmd):
         return 0
 
     def do_close(self, arg):
+        'Exits the program.'
+        try:
+            self.pi3.terminate()
+        except:
+            pass
+        print("Exiting...")
+        return True
+
+    def do_exit(self, arg):
         'Exits the program.'
         try:
             self.pi3.terminate()
@@ -162,15 +185,18 @@ class PllShell(cmd.Cmd):
 
     def do_connect(self, arg):
         '''
-        Connects to the raspberry pi of interest, currently only pi3,
-        so no arguments needed.
+        Connects to the raspberry pi of interest, "connect 'pi3'"
         '''
-        ping_result = self.ping()
-        if ping_result == 0:
-            self.pi3 = PllController('pi3')
-            print('')
-        else:
-            print('Could not connect to pi3')
+        try:
+            name = self.parse(arg)[0]
+            ping_result = self.ping(name)
+            if ping_result == 0:
+                self.pi3 = PllController(name)
+                print('')
+            else:
+                print('Could not connect to %s' % name)
+        except:
+            print('Wrong number of arguments, needs only name of pi')
 
     def do_current(self, arg):
         'Prints the current attenuation settings for the 493nm and 650nm lasers.'
@@ -191,7 +217,8 @@ class PllShell(cmd.Cmd):
 
 # Control Tests:
 test_attn = False
-test_cmd = True
+test_cmd = False
+run = True
 
 if __name__ == "__main__":
     print('Running')
@@ -207,6 +234,8 @@ if __name__ == "__main__":
         print(test_setting)
     elif test_cmd == True:
         print('Testing Command Interface:\n')
+        PllShell().cmdloop()
+    elif run == True:
         PllShell().cmdloop()
     else:
         print('Doing nothing:\n\n\n')
