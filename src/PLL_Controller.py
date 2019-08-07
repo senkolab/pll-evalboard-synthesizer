@@ -187,7 +187,24 @@ class PllShell(cmd.Cmd):
             pass
     
     def sweep_freq(self, laser, cmd):
-        pass
+        if len(cmd) == 5:
+            start = cmd[1]
+            end = cmd[2]
+            step_size = cmd[3]
+            time = cmd[4]
+            level = self.pi3.sweep_freq(laser, start, end, step_size, time)
+            if laser == '493nm':
+                self.l_493nm_freq = level
+            elif laser == '650nm':
+                self.l_650nm_freq = level
+            else:
+                print('Laser not recognized...')
+            # print('')
+        else:
+            print(
+            'Error: Command must be of the form "laser sweep start end step_size time"\n'
+            'e.g "493nm sweep 150 200 10 1"'
+            )
 
     # User triggerable commands
     def do_ping(self, arg):
