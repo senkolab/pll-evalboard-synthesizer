@@ -25,8 +25,8 @@ rf_spi.cshigh = False
 rf_spi.max_speed_hz = 100000
 
 #This program sets the frequency of one PLL connected to this pin
-GPIOpin1 = 5
-freq1 = 200e6
+GPIOpin1 = 4
+freq1 = 150e6
 
 # check for command line args
 if(len(sys.argv) > 1) :

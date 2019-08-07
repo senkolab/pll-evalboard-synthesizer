@@ -25,14 +25,14 @@ rf_spi.cshigh = False
 rf_spi.max_speed_hz = 100000
 
 #This program sets the frequency of one PLL connected to this pin
-GPIOpin1 = 5
+GPIOpin1 = 6
 #Set the current laser frequency: should be locked by wavemeter
 LaserFreq = 430e12
 #Set the overall sweep you want. Make sure the filter on the line isn't too low. The adf4355
 FreqStart = 150e6
 FreqStop = 250e6
-SweepStep = 1e6
-StepTime = 30
+SweepStep = 10e6
+StepTime = 4
 
 
 # check for command line args
@@ -75,5 +75,5 @@ while Freq <= FreqStop:
     print 'FRAC2 value = %d' % (rf_pll_1.frac2)
     print 'MOD2 value = %d' % (rf_pll_1.mod2)
     rf_pll_1.program_freq(rf_spi)
-    Freq = FreqStart + SweepStep
+    Freq += SweepStep
     time.sleep(StepTime)
