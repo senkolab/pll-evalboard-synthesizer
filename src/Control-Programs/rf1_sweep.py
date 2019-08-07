@@ -29,8 +29,8 @@ GPIOpin1 = 5
 #Set the current laser frequency: should be locked by wavemeter
 LaserFreq = 430e12
 #Set the overall sweep you want. Make sure the filter on the line isn't too low. The adf4355
-FreqStart = 430.000200e12
-FreqStop = 430.000300e12
+FreqStart = 150e6
+FreqStop = 250e6
 SweepStep = 1e6
 StepTime = 30
 

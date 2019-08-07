@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # This only works on a Windows machine with plink installed (i.e Putty)
+# Run this from a computer on the lab network, not on the raspberry pis themselves
 import subprocess
 import cmd
 import time
@@ -16,6 +17,7 @@ class PllController:
     change_attn_command = ('python /home/pi/pll-evalboard-synthesizer'
                            '/src/Control-Programs/att1.py %s \n')
     # Dictionaries conataining info on the pis and the laser pins + functions
+    # Frequencies are in MHz
     pi_database = {
         'pi3':{
             'ip': '192.168.168.103',
@@ -33,8 +35,8 @@ class PllController:
             },   
             'freq':{
                 '493nm':{
-                    'pin':'12',
-                    'val':'?'
+                    'pin':'4',
+                    'val':'200'
                 },
                 '650nm':{
                     'pin':'4',
