@@ -143,6 +143,7 @@ class PllShell(cmd.Cmd):
     # Parse the input
     def parse(self, arg):
         'Split the input argument into a tuple.'
+        # To be updated later to enable more user friendly inputs
         return tuple(arg.split())
     
     def ping(self, arg):
