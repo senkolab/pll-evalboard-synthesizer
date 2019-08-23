@@ -53,9 +53,6 @@ class PllController:
     def __init__(self, name):
         # Initiate everything and setup a connection to the named pi
         self.name = name
-        # print(self.pi_database[self.name]['usr'])
-        # print(self.pi_database[self.name]['ip'])
-        # print(self.pi_database[self.name]['pwd'])
         self.connect_cmd = self.init_cmd % (self.pi_database[self.name]['usr'],
                                         self.pi_database[self.name]['ip'],
                                         self.pi_database[self.name]['pwd'])
@@ -75,7 +72,6 @@ class PllController:
         function = 'attn'
         pin = self.pi_database[self.name][function][laser]['pin']
         command = self.change_attn_command % (pin + ' ' + level)
-        # print(command)
         self.sp.stdin.write(command)
         time.sleep(0.75)
         self.pi_database[self.name][function][laser]['val'] = level
@@ -99,39 +95,24 @@ class PllController:
         start to end.
         '''
         freq_range = 0
-        print('sending sweep command to pi')
-        print('hello')
         freq_range = (int(end) - int(start))
-        print(freq_range)
         if (freq_range) >= 0:
             function = 'freq'
-            print('reached step time')
             step_time = int(sweep_time) / (freq_range / int(step_size))
-            print('step time', step_time)
-            if step_time < 1:
-                step_time = 1
+            if step_time < 0.5:
+                step_time = 0.5
             pin = self.pi_database[self.name][function][laser]['pin']
-            print('passed pin')
-            print('start is currently', type(start))
             args = (pin + ' '
                 + start + ' '
                 + end + ' '
                 + step_size + ' '
                 + str(step_time))
-            print('Args')
-            print(args)
+
             command = self.sweep_freq_command % (args)
-            print('Command')
-            print(command)
             self.sp.stdin.write(command)
-            print('about to sleep, time is', sweep_time, type(sweep_time))
-            temp_time = float(sweep_time)
-            time.sleep(1)
-            print('slept a bit')
-            time.sleep(temp_time)
-            print('done sleeping')
+
+            time.sleep(float(sweep_time)
             self.pi_database[self.name][function][laser]['val'] = end
-            print('wrote value to database')
             return end
         else:
             pass
