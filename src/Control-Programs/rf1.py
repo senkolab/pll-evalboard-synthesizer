@@ -32,7 +32,7 @@ freq1 = 150e6
 if(len(sys.argv) > 1) :
     try:
         GPIOpin1 = int(sys.argv[1])
-        freq = float(sys.argv[2])
+        freq1 = float(sys.argv[2]) * 10**6
     except ValueError:
         if(sys.argv[1] == "loop"):
             do_loop = True
