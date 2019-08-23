@@ -90,7 +90,7 @@ class PllController:
         self.sp.stdin.write(command)
         time.sleep(0.75)
         self.pi_database[self.name][function][laser]['val'] = freq
-        print('AOM frequency changed to %s' % freq)
+        print('AOM frequency changed to %s' % freq, 'MHz')
         return freq
     
     def sweep_freq(self, laser, start, end, step_size, time):
