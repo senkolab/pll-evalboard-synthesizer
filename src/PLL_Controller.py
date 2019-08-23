@@ -111,7 +111,7 @@ class PllController:
             command = self.sweep_freq_command % (args)
             self.sp.stdin.write(command)
 
-            time.sleep(float(sweep_time)
+            time.sleep(float(sweep_time))
             self.pi_database[self.name][function][laser]['val'] = end
             return end
         else:
@@ -312,6 +312,10 @@ class PllShell(cmd.Cmd):
             del temp
         except:
             print('No connection to pi3 found')
+
+    def __init__(self):
+        super().__init__()
+        self.do_connect('pi3')
 
 # Control Tests:
 test_attn = False
