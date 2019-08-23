@@ -241,7 +241,9 @@ class PllShell(cmd.Cmd):
         # Both this and do_650nm are semi-redundant, could be compacted
         '''
         Does things to the 493nm cooling laser. 
-        Syntax: "493nm attn "25" or "493nm freq 150"
+        Syntax: "493nm attn "25" or "493nm freq 150"\n
+        "493nm freq 200"\n
+        "493nm sweep 'start' 'end' 'step size' 'time'"
         '''
         cmd = self.parse(arg)
         laser = '493nm'
@@ -260,7 +262,12 @@ class PllShell(cmd.Cmd):
             print('or connection not established')
 
     def do_650nm(self, arg):
-        'Does things to the 650nm repump laser. Syntax: "650nm" "attn" "25"'
+         '''
+        Does things to the 650nm cooling laser. 
+        Syntax: "650nm attn "25" or "650nm freq 150"\n
+        "650nm freq 200"\n
+        "650nm sweep 'start' 'end' 'step size' 'time'"
+        '''
         cmd = self.parse(arg)
         laser = '650nm'
         try:
