@@ -93,27 +93,45 @@ class PllController:
         print('AOM frequency changed to %s' % freq, 'MHz')
         return freq
     
-    def sweep_freq(self, laser, start, end, step_size, time):
+    def sweep_freq(self, laser, start, end, step_size, sweep_time):
         '''
         Sweeps the frequency of the aome corresponding to the laser from
         start to end.
         '''
-        freq_range = end - start
+        freq_range = 0
+        print('sending sweep command to pi')
+        print('hello')
+        freq_range = (int(end) - int(start))
+        print(freq_range)
         if (freq_range) >= 0:
             function = 'freq'
-            step_time = time / (freq_range / step_size)
+            print('reached step time')
+            step_time = int(sweep_time) / (freq_range / int(step_size))
+            print('step time', step_time)
             if step_time < 1:
                 step_time = 1
             pin = self.pi_database[self.name][function][laser]['pin']
+            print('passed pin')
+            print('start is currently', type(start))
             args = (pin + ' '
                 + start + ' '
                 + end + ' '
                 + step_size + ' '
-                + step_time)
+                + str(step_time))
+            print('Args')
+            print(args)
             command = self.sweep_freq_command % (args)
+            print('Command')
+            print(command)
             self.sp.stdin.write(command)
-            time.sleep(time + 0.75)
+            print('about to sleep, time is', sweep_time, type(sweep_time))
+            temp_time = float(sweep_time)
+            time.sleep(1)
+            print('slept a bit')
+            time.sleep(temp_time)
+            print('done sleeping')
             self.pi_database[self.name][function][laser]['val'] = end
+            print('wrote value to database')
             return end
         else:
             pass
@@ -188,6 +206,7 @@ class PllShell(cmd.Cmd):
             pass
     
     def sweep_freq(self, laser, cmd):
+        print('Starting sweep command')
         if len(cmd) == 5:
             start = cmd[1]
             end = cmd[2]
@@ -251,6 +270,7 @@ class PllShell(cmd.Cmd):
             elif cmd[0] == 'freq':
                 self.change_freq(laser, cmd)
             elif cmd[0] == 'sweep':
+                print('running sweep command')
                 self.sweep_freq(laser, cmd)
             else:
                 pass
