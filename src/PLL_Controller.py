@@ -298,9 +298,9 @@ class PllShell(cmd.Cmd):
         r_aom = self.l_650nm_freq
         print('The current attenuation and frequency settings are:\n')
         print('493nm cooling attenuatoin: %s' % c)
-        print('493nm cooling AOM frequency: %s' % c_aom)
+        print('493nm cooling AOM frequency: %s' % c_aom, 'MHz')
         print('650nm repump attenuation: %s' % r)
-        print('650nm repump AOM frequency: %s' % r_aom)
+        print('650nm repump AOM frequency: %s' % r_aom, 'MHz')
         print('')
 
     def do_check_connection(self, arg):

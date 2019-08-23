@@ -40,9 +40,9 @@ if(len(sys.argv) > 1) :
     try:
         GPIOpin1 = int(sys.argv[1])
         # LaserFreq = float(sys.argv[2])
-        FreqStart = float(sys.argv[2])
-        FreqStop = float(sys.argv[3])
-        SweepStep = float(sys.argv[4])
+        FreqStart = float(sys.argv[2]) * 10**6
+        FreqStop = float(sys.argv[3]) * 10**6
+        SweepStep = float(sys.argv[4]) * 10**6
         StepTime = float(sys.argv[5])
     except ValueError:
         if(sys.argv[1] == "loop"):
