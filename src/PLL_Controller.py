@@ -189,7 +189,7 @@ class PllShell(cmd.Cmd):
     
     def sweep_freq(self, laser, cmd):
         if len(cmd) == 5:
-            start = cmd[1]
+            start = cmd[1] # All in MHz
             end = cmd[2]
             step_size = cmd[3]
             time = cmd[4]
