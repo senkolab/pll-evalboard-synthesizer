@@ -29,15 +29,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="389.83436"
-     inkscape:cy="419.17771"
+     inkscape:cx="363.26765"
+     inkscape:cy="320.38583"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1618"
-     inkscape:window-height="1027"
-     inkscape:window-x="1974"
-     inkscape:window-y="26"
+     inkscape:window-width="1858"
+     inkscape:window-height="1057"
+     inkscape:window-x="54"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -168,7 +168,7 @@
            style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
            y="33.378342"
            x="33.570976"
-           sodipodi:role="line">-847.625MHz</tspan></text>
+           sodipodi:role="line">-647.625MHz</tspan></text>
     </g>
     <g
        id="g1145-0"
@@ -202,7 +202,7 @@
            x="33.570976"
            y="49.782524"
            style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-           id="tspan1089-8">89.375MHz</tspan></text>
+           id="tspan1089-8">289.375MHz</tspan></text>
     </g>
     <g
        id="g1152-7"
@@ -236,7 +236,7 @@
            style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
            y="67.774208"
            x="33.570976"
-           sodipodi:role="line">992.375MHz</tspan></text>
+           sodipodi:role="line">1192.375MHz</tspan></text>
     </g>
     <g
        id="g1159-4"
@@ -270,7 +270,7 @@
            x="33.570976"
            y="85.236725"
            style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-           id="tspan1109-8">-75.815MHz</tspan></text>
+           id="tspan1109-8">920.48MHz</tspan></text>
     </g>
     <g
        transform="translate(-2.246742,112.78709)"
@@ -304,7 +304,7 @@
            style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
            y="103.75758"
            x="33.570976"
-           sodipodi:role="line">-221.005MHz</tspan></text>
+           sodipodi:role="line">306.75MHz</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -865,7 +865,7 @@
              x="33.570976"
              y="103.75758"
              style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-             id="tspan1119-7-6">317.75MHz</tspan></text>
+             id="tspan1119-7-6">-232.005MHz</tspan></text>
       </g>
       <path
          inkscape:connector-curvature="0"
@@ -1785,7 +1785,7 @@
              x="33.570976"
              y="103.75758"
              style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-             id="tspan1119-7-6-3">931.48MHz</tspan></text>
+             id="tspan1119-7-6-3">-86.815MHz</tspan></text>
       </g>
       <path
          inkscape:connector-curvature="0"
