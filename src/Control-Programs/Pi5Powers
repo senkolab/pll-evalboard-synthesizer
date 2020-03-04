@@ -1,0 +1,7 @@
+#!/bin/bash
+#python rf1.py 4 393.565 
+#python rf1.py 5 538.755 
+#python rf1.py 6 613.73
+python att1.py 12 8.5 #14.2dBm at EOM 
+python att1.py 13 12.5 #13.2dBm at EOM 
+python att1.py 16 13.5 #13.6dBm at EOM 
