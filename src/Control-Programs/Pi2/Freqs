@@ -1,0 +1,4 @@
+#!/bin/bash
+python rf1.py 4 2394.76
+python rf1.py 5 4234.76
+python rf1.py 6 1632.01 
