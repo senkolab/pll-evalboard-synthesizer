@@ -1,9 +1,6 @@
 #!/bin/bash
-python rf1.py 4 1200 
-python rf1.py 6 4665.065 
-#python rf1.py 5 4365.065
-python rf1.py 5 3372.675 #493nm -300MHz detuned
-#python rf1.py 6 3672.68
-#python att1.py 12 0
-#python att1.py 13 11.5 
-#python att1.py 16 14.5
+python ../rf1.py 4 1200 
+python ../rf1.py 6 4665.065 
+#python ../rf1.py 5 4365.065
+python ../rf1.py 5 3372.675 #493nm -300MHz detuned
+#python ../rf1.py 6 3672.68

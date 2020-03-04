@@ -1,4 +1,4 @@
 #!/bin/bash
-python att1.py 12 0
-python att1.py 13 0
-python att1.py 16 0
+python ../att1.py 12 0
+python ../att1.py 13 0
+python ../att1.py 16 0

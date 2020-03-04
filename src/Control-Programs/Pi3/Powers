@@ -1,9 +1,4 @@
 #!/bin/bash
-#python rf1.py 4 1200 
-#python rf1.py 5 4365.065 
-#python rf1.py 5 4365.065
-#python rf1.py 6 3672.675
-#python rf1.py 6 3672.68
-python att1.py 12 0 
-python att1.py 13 5 #16.2dBm at EOM
-python att1.py 16 5 #12.5dBm at EOM 
+python ../att1.py 12 0 
+python ../att1.py 13 5 #16.2dBm at EOM
+python ../att1.py 16 5 #12.5dBm at EOM 
