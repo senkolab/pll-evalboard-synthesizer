@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="123.05353mm"
-   height="119.66505mm"
-   viewBox="0 0 123.05353 119.66505"
+   width="123.66753mm"
+   height="120.34032mm"
+   viewBox="0 0 123.66754 120.34033"
    version="1.1"
    id="svg1939"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
@@ -28,15 +28,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="132.93926"
-     inkscape:cy="104.67784"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="180.56805"
+     inkscape:cy="294.35732"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g2143-2-1-2"
      showgrid="false"
-     inkscape:window-width="1858"
+     inkscape:window-width="1849"
      inkscape:window-height="1057"
-     inkscape:window-x="54"
+     inkscape:window-x="63"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -55,7 +55,8 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-15.274697,-2.477682)">
+     transform="translate(-14.660694,-1.8024014)"
+     style="display:inline">
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0800cb;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -214,7 +215,7 @@
              y="21.979656"
              x="14.218739"
              id="tspan2521"
-             sodipodi:role="line">4</tspan></text>
+             sodipodi:role="line">5</tspan></text>
       </g>
       <rect
          ry="2.3627236"
@@ -250,7 +251,7 @@
            y="13.106834"
            x="65.988068"
            id="tspan2521-8"
-           sodipodi:role="line">12</tspan></text>
+           sodipodi:role="line">13</tspan></text>
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
@@ -303,7 +304,7 @@
                  y="21.979656"
                  x="14.218739"
                  id="tspan2521-87"
-                 sodipodi:role="line">5</tspan></text>
+                 sodipodi:role="line">4</tspan></text>
           </g>
           <rect
              ry="2.3627236"
@@ -339,7 +340,7 @@
                y="20.108772"
                x="52.197735"
                id="tspan2521-8-8"
-               sodipodi:role="line">15</tspan></text>
+               sodipodi:role="line">12</tspan></text>
         </g>
         <g
            id="g2596-5"
@@ -647,7 +648,7 @@
                y="20.108772"
                x="52.197735"
                id="tspan2521-8-8-8"
-               sodipodi:role="line">15</tspan></text>
+               sodipodi:role="line">13</tspan></text>
         </g>
         <g
            id="g2596-5-3"
@@ -749,54 +750,6 @@
          d="m 87.922975,90.928149 56.886735,-2.65e-4"
          style="fill:none;stroke:#000000;stroke-width:0.37822437px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <text
-         id="text994"
-         y="29.654091"
-         x="102.52898"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="29.654091"
-           x="102.52898"
-           id="tspan992"
-           sodipodi:role="line">-210.625</tspan><tspan
-           id="tspan996"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="31.858952"
-           x="102.52898"
-           sodipodi:role="line"> 2-&gt;1 (pump/cool)</tspan></text>
-      <text
-         id="text994-1"
-         y="90.298004"
-         x="95.659042"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="90.298004"
-           x="95.659042"
-           id="tspan992-08"
-           sodipodi:role="line">420.48 MHz</tspan><tspan
-           id="tspan996-6"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="92.502869"
-           x="95.659042"
-           sodipodi:role="line">3-&gt;2</tspan></text>
-      <text
-         id="text994-9"
-         y="44.141029"
-         x="102.9017"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="44.141029"
-           x="102.9017"
-           id="tspan992-4"
-           sodipodi:role="line">692.375 MHz</tspan><tspan
-           id="tspan996-0"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="46.34589"
-           x="102.9017"
-           sodipodi:role="line"> 1-&gt;0 (meas)</tspan></text>
-      <text
          id="text1565"
          y="56.430855"
          x="69.752831"
@@ -814,7 +767,7 @@
            sodipodi:role="line">in Repo Barium_Hyperfine-Zeeman-Structure</tspan></text>
       <g
          id="g1530-8-9"
-         transform="rotate(-90,74.378205,33.534566)"
+         transform="rotate(-90,73.999977,33.156338)"
          style="stroke-width:1.42950952">
         <rect
            transform="matrix(0,-0.57051689,1,0,33.254233,154.57917)"
@@ -904,72 +857,6 @@
              id="tspan2810-2-9">ZX10-2-852-5+</tspan></text>
       </g>
       <g
-         id="g2096"
-         transform="translate(-5.4239577,-13.748937)"
-         style="stroke-width:1.42950952">
-        <g
-           id="g2143"
-           style="stroke-width:1.42950952">
-          <rect
-             style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             id="rect2500-9-9-7"
-             width="18.852175"
-             height="13.096206"
-             x="108.61089"
-             y="22.55258"
-             ry="2.3627236" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-             x="117.9636"
-             y="27.829437"
-             id="text2513-8-9-1"><tspan
-               sodipodi:role="line"
-               id="tspan2511-2-2-2"
-               x="117.9636"
-               y="27.829437"
-               style="text-align:center;text-anchor:middle;stroke-width:0.37822437">LP Filter</tspan><tspan
-               sodipodi:role="line"
-               x="117.9636"
-               y="33.121105"
-               style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-               id="tspan2517-3-8-1">SLP250+</tspan></text>
-        </g>
-      </g>
-      <g
-         id="g2096-4"
-         transform="translate(-5.4239577,47.209413)"
-         style="stroke-width:1.42950952">
-        <g
-           id="g2143-9"
-           style="stroke-width:1.42950952">
-          <rect
-             style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             id="rect2500-9-9-7-89"
-             width="18.852175"
-             height="13.096206"
-             x="108.61089"
-             y="22.55258"
-             ry="2.3627236" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-             x="117.9636"
-             y="27.829437"
-             id="text2513-8-9-1-3"><tspan
-               sodipodi:role="line"
-               id="tspan2511-2-2-2-94"
-               x="117.9636"
-               y="27.829437"
-               style="text-align:center;text-anchor:middle;stroke-width:0.37822437">LP Filter</tspan><tspan
-               sodipodi:role="line"
-               x="117.9636"
-               y="33.121105"
-               style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-               id="tspan2517-3-8-1-0">SLP250+</tspan></text>
-        </g>
-      </g>
-      <g
          id="g2096-82-7"
          transform="translate(-5.4239577,61.827334)"
          style="stroke-width:1.42950952">
@@ -978,32 +865,7 @@
            style="stroke-width:1.42950952">
           <g
              id="g2197-4"
-             style="stroke-width:1.42950952">
-            <rect
-               ry="2.3627236"
-               y="22.55258"
-               x="108.61089"
-               height="13.096206"
-               width="18.852175"
-               id="rect2500-9-9-7-8-0"
-               style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-            <text
-               id="text2513-8-9-1-9-5"
-               y="27.829437"
-               x="117.9636"
-               style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-               xml:space="preserve"><tspan
-                 style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-                 y="27.829437"
-                 x="117.9636"
-                 id="tspan2511-2-2-2-9-7"
-                 sodipodi:role="line">LP Filter</tspan><tspan
-                 id="tspan2517-3-8-1-8-1"
-                 style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-                 y="33.121105"
-                 x="117.9636"
-                 sodipodi:role="line">SLP450+</tspan></text>
-          </g>
+             style="stroke-width:1.42950952" />
         </g>
       </g>
       <rect
@@ -1348,203 +1210,856 @@
          d="m 144.895,90.927745 -2.6e-4,-28.35517"
          style="fill:none;stroke:#000000;stroke-width:0.37822437px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <text
-         id="text994-7"
-         y="14.726461"
-         x="93.923058"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="14.726461"
-           x="93.923058"
-           id="tspan992-6"
-           sodipodi:role="line">-1147.63 MHz</tspan><tspan
-           id="tspan996-9"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="16.931322"
-           x="93.923058"
-           sodipodi:role="line"> 1-&gt;1 (pump/cool)</tspan></text>
-      <text
-         id="text994-1-8"
-         y="75.863525"
-         x="95.679237"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="75.863525"
-           x="95.679237"
-           id="tspan992-08-0"
-           sodipodi:role="line">-193.25 MHz</tspan><tspan
-           id="tspan996-6-3"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="78.06839"
-           x="95.679237"
-           sodipodi:role="line">2-&gt;2</tspan></text>
-      <text
-         id="text994-1-1"
-         y="104.83347"
-         x="99.88192"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="104.83347"
-           x="99.88192"
-           id="tspan992-08-3"
-           sodipodi:role="line">-586.815 MHz</tspan><tspan
-           id="tspan996-6-7"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="107.03834"
-           x="99.88192"
-           sodipodi:role="line">0-&gt;1</tspan></text>
-      <text
-         id="text994-1-1-5"
-         y="132.08847"
-         x="101.93232"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="132.08847"
-           x="101.93232"
-           id="tspan992-08-3-4"
-           sodipodi:role="line">-732.005 MHz</tspan><tspan
-           id="tspan996-6-7-4"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="134.29333"
-           x="101.93232"
-           sodipodi:role="line">1-&gt;1</tspan></text>
-      <text
-         id="text994-1-1-5-6"
-         y="159.49797"
-         x="101.96587"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="159.49797"
-           x="101.96587"
-           id="tspan992-08-3-4-1"
-           sodipodi:role="line">300 MHz</tspan><tspan
-           id="tspan996-6-7-4-8"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="161.70284"
-           x="101.96587"
-           sodipodi:role="line">Ba138</tspan></text>
-      <text
-         id="text994-1-1-5-6-6"
-         y="159.50055"
-         x="114.16504"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="159.50055"
-           x="114.16504"
-           id="tspan992-08-3-4-1-9"
-           sodipodi:role="line">368 MHz</tspan><tspan
-           id="tspan996-6-7-4-8-5"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="161.70541"
-           x="114.16504"
-           sodipodi:role="line">Ba136</tspan></text>
-      <text
-         id="text994-1-1-5-6-8"
-         y="159.48592"
-         x="126.40297"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="159.48592"
-           x="126.40297"
-           id="tspan992-08-3-4-1-8"
-           sodipodi:role="line">474.5 MHz</tspan><tspan
-           id="tspan996-6-7-4-8-8"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="161.69078"
-           x="126.40297"
-           sodipodi:role="line">Ba134</tspan></text>
-      <text
-         id="text994-1-1-5-6-2"
-         y="159.49927"
-         x="138.55478"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="159.49927"
-           x="138.55478"
-           id="tspan992-08-3-4-1-83"
-           sodipodi:role="line">592 MHz</tspan><tspan
-           id="tspan996-6-7-4-8-0"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="161.70413"
-           x="138.55478"
-           sodipodi:role="line">Ba132</tspan></text>
-      <text
-         id="text994-1-1-5-6-26"
-         y="159.49883"
-         x="150.77547"
-         style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="159.49883"
-           x="150.77547"
-           id="tspan992-08-3-4-1-7"
-           sodipodi:role="line">694 MHz</tspan><tspan
-           id="tspan996-6-7-4-8-82"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="161.70369"
-           x="150.77547"
-           sodipodi:role="line">Ba130</tspan></text>
-      <text
          id="text2993"
-         y="118.14167"
-         x="151.73235"
+         y="155.04088"
+         x="121.21443"
          style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
          xml:space="preserve"><tspan
-           style="font-size:4.23333311px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="118.14167"
-           x="151.73235"
-           id="tspan2991"
-           sodipodi:role="line">Even</tspan><tspan
            id="tspan2995"
-           style="font-size:4.23333311px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="123.43333"
-           x="151.73235"
-           sodipodi:role="line">Isotopes</tspan></text>
+           style="font-size:7.56448746px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           y="155.04088"
+           x="121.21443"
+           sodipodi:role="line">Even Isotopes</tspan></text>
       <text
          id="text2993-1"
-         y="71.894363"
-         x="137.26501"
+         y="141.86652"
+         x="107.41515"
          style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
          xml:space="preserve"><tspan
            id="tspan2995-0"
-           style="font-size:4.23333311px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="71.894363"
-           x="137.26501"
+           style="font-size:7.56448746px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           y="141.86652"
+           x="107.41515"
            sodipodi:role="line">Ba137</tspan></text>
+      <g
+         id="g2096"
+         transform="translate(5.1659898,15.545758)"
+         style="stroke-width:1.42950952" />
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#8b8b8b;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.37882001, 1.51528005;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect1109"
+         width="120.37622"
+         height="57.964439"
+         x="31.552546"
+         y="-1.2434919"
+         ry="0"
+         rx="0" />
       <text
          id="text2993-1-7"
-         y="49.036842"
-         x="130.36827"
+         y="4.5803003"
+         x="107.46133"
          style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
          xml:space="preserve"><tspan
            id="tspan2995-0-0"
-           style="font-size:4.23333311px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="49.036842"
-           x="130.36827"
+           style="font-size:7.56448746px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           y="4.5803003"
+           x="107.46133"
            sodipodi:role="line">Ba133</tspan></text>
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#8b8b8b;stroke-width:0.37881997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.37882, 1.51528005;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect1109-7"
+         width="120.37623"
+         height="86.520645"
+         x="31.552536"
+         y="56.720947"
+         ry="0"
+         rx="0" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="+1200MHz"
+     transform="translate(-14.660694,-1.8024014)"
+     style="display:none">
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994"
+       y="29.654091"
+       x="102.52898"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="29.654091"
+         x="102.52898"
+         id="tspan992"
+         sodipodi:role="line">-1110.63 MHz</tspan><tspan
+         id="tspan996"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="31.858952"
+         x="102.52898"
+         sodipodi:role="line"> 2-&gt;1 (pump/cool)</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1"
+       y="90.298004"
+       x="100.19768"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="90.298004"
+         x="100.19768"
+         id="tspan992-08"
+         sodipodi:role="line">479.52 MHz</tspan><tspan
+         id="tspan996-6"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="92.502869"
+         x="100.19768"
+         sodipodi:role="line">2-&gt;2</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-9"
+       y="44.141029"
+       x="102.9017"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="44.141029"
+         x="102.9017"
+         id="tspan992-4"
+         sodipodi:role="line">-207.625 MHz</tspan><tspan
+         id="tspan996-0"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="46.34589"
+         x="102.9017"
+         sodipodi:role="line"> 1-&gt;0 (meas)</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-7"
+       y="14.726461"
+       x="103.00033"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="14.726461"
+         x="103.00033"
+         id="tspan992-6"
+         sodipodi:role="line">-2047.625 MHz</tspan><tspan
+         id="tspan996-9"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="16.931322"
+         x="103.00033"
+         sodipodi:role="line"> 1-&gt;1 (pump/cool)</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-8"
+       y="75.863525"
+       x="99.461433"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="75.863525"
+         x="99.461433"
+         id="tspan992-08-0"
+         sodipodi:role="line">-1093.3 MHz</tspan><tspan
+         id="tspan996-6-3"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="78.06839"
+         x="99.461433"
+         sodipodi:role="line">3-&gt;2</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1"
+       y="104.83347"
+       x="100.63836"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="104.83347"
+         x="100.63836"
+         id="tspan992-08-3"
+         sodipodi:role="line">-1486.815 MHz</tspan><tspan
+         id="tspan996-6-7"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="107.03834"
+         x="100.63836"
+         sodipodi:role="line">0-&gt;1</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1-5"
+       y="132.08847"
+       x="101.93232"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="132.08847"
+         x="101.93232"
+         id="tspan992-08-3-4"
+         sodipodi:role="line">-1632.01 MHz</tspan><tspan
+         id="tspan996-6-7-4"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="134.29333"
+         x="101.93232"
+         sodipodi:role="line">1-&gt;1</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1-5-6"
+       y="159.49797"
+       x="101.96587"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="159.49797"
+         x="101.96587"
+         id="tspan992-08-3-4-1"
+         sodipodi:role="line">-1200 MHz</tspan><tspan
+         id="tspan996-6-7-4-8"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="161.70284"
+         x="101.96587"
+         sodipodi:role="line">Ba138</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1-5-6-6"
+       y="159.50055"
+       x="114.16504"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="159.50055"
+         x="114.16504"
+         id="tspan992-08-3-4-1-9"
+         sodipodi:role="line">-1132 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-5"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="161.70541"
+         x="114.16504"
+         sodipodi:role="line">Ba136</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1-5-6-8"
+       y="159.48592"
+       x="126.40297"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="159.48592"
+         x="126.40297"
+         id="tspan992-08-3-4-1-8"
+         sodipodi:role="line">-1025.5 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-8"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="161.69078"
+         x="126.40297"
+         sodipodi:role="line">Ba134</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1-5-6-2"
+       y="159.49927"
+       x="138.55478"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="159.49927"
+         x="138.55478"
+         id="tspan992-08-3-4-1-83"
+         sodipodi:role="line">-908 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-0"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="161.70413"
+         x="138.55478"
+         sodipodi:role="line">Ba132</tspan></text>
+    <text
+       transform="matrix(0.69954709,0,0,0.69953423,-7.2792897,2.8047653)"
+       id="text994-1-1-5-6-26"
+       y="159.49883"
+       x="150.77547"
+       style="font-style:normal;font-weight:normal;font-size:1.76388884px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="159.49883"
+         x="150.77547"
+         id="tspan992-08-3-4-1-7"
+         sodipodi:role="line">-806 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-82"
+         style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
+         y="161.70369"
+         x="150.77547"
+         sodipodi:role="line">Ba130</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.56448746px;line-height:1.25;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.54067534"
+       x="198.25098"
+       y="32.593117"
+       id="text1075"
+       transform="matrix(0.69954066,0,0,0.69954066,-7.2792897,2.8047653)"><tspan
+         sodipodi:role="line"
+         id="tspan1073"
+         x="198.25098"
+         y="32.593117"
+         style="font-size:7.56448746px;text-align:end;text-anchor:end;stroke-width:0.54067534">650nm EOM</tspan><tspan
+         sodipodi:role="line"
+         x="198.25098"
+         y="42.048725"
+         style="font-size:3.53009415px;text-align:end;text-anchor:end;stroke-width:0.54067534"
+         id="tspan1077">+1200 MHz laser</tspan></text>
+    <g
+       transform="matrix(0.69954709,0,0,0.69953423,-3.6654364,13.679555)"
+       id="g2143"
+       style="stroke-width:1.42950952">
+      <rect
+         style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2500-9-9-7"
+         width="18.852175"
+         height="13.096206"
+         x="108.61089"
+         y="22.55258"
+         ry="2.3627236" />
       <text
-         id="text3040"
-         y="57.816666"
-         x="123.03229"
+         xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
-         xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="57.816666"
-           x="123.03229"
-           id="tspan3038"
-           sodipodi:role="line">Assuming +300 MHz</tspan><tspan
-           id="tspan3042"
-           style="text-align:center;text-anchor:middle;stroke-width:0.37822437"
-           y="63.108334"
-           x="123.03229"
-           sodipodi:role="line">Laser Shift</tspan></text>
+         x="117.9636"
+         y="27.829437"
+         id="text2513-8-9-1"><tspan
+           sodipodi:role="line"
+           id="tspan2511-2-2-2"
+           x="117.9636"
+           y="27.829437"
+           style="text-align:center;text-anchor:middle;stroke-width:0.37822437">LP Filter</tspan><tspan
+           sodipodi:role="line"
+           x="117.9636"
+           y="33.121105"
+           style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           id="tspan2517-3-8-1">SLP250+</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="0MHz"
+     style="display:none">
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-12"
+       y="23.557451"
+       x="64.454521"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="23.557451"
+         x="64.454521"
+         id="tspan992-2"
+         sodipodi:role="line">89.375 MHz</tspan><tspan
+         id="tspan996-7"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="25.099842"
+         x="64.454521"
+         sodipodi:role="line"> 2-&gt;1 (pump/cool)</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-4"
+       y="65.980339"
+       x="62.823677"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="65.980339"
+         x="62.823677"
+         id="tspan992-08-07"
+         sodipodi:role="line">720.48 MHz</tspan><tspan
+         id="tspan996-6-1"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="67.522728"
+         x="62.823677"
+         sodipodi:role="line">2-&gt;2</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-9-2"
+       y="33.69165"
+       x="64.715256"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="33.69165"
+         x="64.715256"
+         id="tspan992-4-3"
+         sodipodi:role="line">992.375 MHz</tspan><tspan
+         id="tspan996-0-6"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="35.234039"
+         x="64.715256"
+         sodipodi:role="line"> 1-&gt;0 (meas)</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-7-6"
+       y="13.114966"
+       x="64.784248"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="13.114966"
+         x="64.784248"
+         id="tspan992-6-1"
+         sodipodi:role="line">-847.625 MHz</tspan><tspan
+         id="tspan996-9-3"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="14.657356"
+         x="64.784248"
+         sodipodi:role="line"> 1-&gt;1 (pump/cool)</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-8-8"
+       y="55.882824"
+       x="62.308647"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="55.882824"
+         x="62.308647"
+         id="tspan992-08-0-0"
+         sodipodi:role="line">106.75 MHz</tspan><tspan
+         id="tspan996-6-3-5"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="57.425213"
+         x="62.308647"
+         sodipodi:role="line">3-&gt;2</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-1"
+       y="76.148491"
+       x="63.131958"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="76.148491"
+         x="63.131958"
+         id="tspan992-08-3-8"
+         sodipodi:role="line">-286.815 MHz</tspan><tspan
+         id="tspan996-6-7-3"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="77.69088"
+         x="63.131958"
+         sodipodi:role="line">0-&gt;1</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-5-5"
+       y="95.21447"
+       x="64.037132"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="95.21447"
+         x="64.037132"
+         id="tspan992-08-3-4-4"
+         sodipodi:role="line">-432.005 MHz</tspan><tspan
+         id="tspan996-6-7-4-5"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="96.756859"
+         x="64.037132"
+         sodipodi:role="line">1-&gt;1</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-5-6-7"
+       y="114.38854"
+       x="64.060616"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.38854"
+         x="64.060616"
+         id="tspan992-08-3-4-1-6"
+         sodipodi:role="line">0 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-4"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="115.93093"
+         x="64.060616"
+         sodipodi:role="line">Ba138</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-5-6-6-2"
+       y="114.39034"
+       x="72.594414"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.39034"
+         x="72.594414"
+         id="tspan992-08-3-4-1-9-1"
+         sodipodi:role="line">68 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-5-6"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="115.93273"
+         x="72.594414"
+         sodipodi:role="line">Ba136</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-5-6-8-7"
+       y="114.3801"
+       x="81.155342"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.3801"
+         x="81.155342"
+         id="tspan992-08-3-4-1-8-3"
+         sodipodi:role="line">174.5 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-8-2"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="115.92249"
+         x="81.155342"
+         sodipodi:role="line">Ba134</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-5-6-2-0"
+       y="114.38944"
+       x="89.656029"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.38944"
+         x="89.656029"
+         id="tspan992-08-3-4-1-83-1"
+         sodipodi:role="line">292 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-0-7"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="115.93183"
+         x="89.656029"
+         sodipodi:role="line">Ba132</tspan></text>
+    <text
+       transform="matrix(1.0000092,0,0,0.9999908,-14.660694,-1.8024014)"
+       id="text994-1-1-5-6-26-3"
+       y="114.38913"
+       x="98.204903"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.38913"
+         x="98.204903"
+         id="tspan992-08-3-4-1-7-0"
+         sodipodi:role="line">394 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-82-5"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="115.93152"
+         x="98.204903"
+         sodipodi:role="line">Ba130</tspan></text>
+    <text
+       transform="translate(-14.660694,-1.8024014)"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29166651px;line-height:1.25;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3782244"
+       x="131.41589"
+       y="25.61339"
+       id="text1075-8"><tspan
+         sodipodi:role="line"
+         id="tspan1073-8"
+         x="131.41589"
+         y="25.61339"
+         style="font-size:5.29166651px;text-align:end;text-anchor:end;stroke-width:0.3782244">650nm EOM</tspan><tspan
+         sodipodi:role="line"
+         x="131.41589"
+         y="32.227974"
+         style="font-size:2.46944427px;text-align:end;text-anchor:end;stroke-width:0.3782244"
+         id="tspan1077-1">+1200 MHz laser</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="300MHz">
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-12-6"
+       y="21.73292"
+       x="44.502426"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="21.73292"
+         x="44.502426"
+         id="tspan992-2-8"
+         sodipodi:role="line">-210.625 MHz</tspan><tspan
+         id="tspan996-7-3"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="23.275311"
+         x="44.502426"
+         sodipodi:role="line"> 2-&gt;1 (pump/cool)</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-4-8"
+       y="64.155807"
+       x="44.988243"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="64.155807"
+         x="44.988243"
+         id="tspan992-08-07-2"
+         sodipodi:role="line">420.48 MHz</tspan><tspan
+         id="tspan996-6-1-6"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="65.698196"
+         x="44.988243"
+         sodipodi:role="line">2-&gt;2</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-9-2-2"
+       y="31.867117"
+       x="50.054787"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="31.867117"
+         x="50.054787"
+         id="tspan992-4-3-8"
+         sodipodi:role="line">692.375 MHz</tspan><tspan
+         id="tspan996-0-6-9"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="33.409508"
+         x="50.054787"
+         sodipodi:role="line"> 1-&gt;0 (meas)</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-7-6-7"
+       y="11.290436"
+       x="50.123787"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="11.290436"
+         x="50.123787"
+         id="tspan992-6-1-4"
+         sodipodi:role="line">-1147.625 MHz</tspan><tspan
+         id="tspan996-9-3-3"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="12.832826"
+         x="50.123787"
+         sodipodi:role="line"> 1-&gt;1 (pump/cool)</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-8-8-9"
+       y="54.058292"
+       x="45.002377"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="54.058292"
+         x="45.002377"
+         id="tspan992-08-0-0-8"
+         sodipodi:role="line">-193.25 MHz</tspan><tspan
+         id="tspan996-6-3-5-9"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="55.600681"
+         x="45.002377"
+         sodipodi:role="line">3-&gt;2</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-1-8"
+       y="74.323959"
+       x="48.471497"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="74.323959"
+         x="48.471497"
+         id="tspan992-08-3-8-3"
+         sodipodi:role="line">-586.815 MHz</tspan><tspan
+         id="tspan996-6-7-3-0"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="75.866348"
+         x="48.471497"
+         sodipodi:role="line">0-&gt;1</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-5-5-4"
+       y="93.389938"
+       x="49.376671"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="93.389938"
+         x="49.376671"
+         id="tspan992-08-3-4-4-1"
+         sodipodi:role="line">-732.005 MHz</tspan><tspan
+         id="tspan996-6-7-4-5-5"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="94.932327"
+         x="49.376671"
+         sodipodi:role="line">1-&gt;1</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-5-6-7-7"
+       y="112.56401"
+       x="49.400146"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="112.56401"
+         x="49.400146"
+         id="tspan992-08-3-4-1-6-6"
+         sodipodi:role="line">-300 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-4-1"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.1064"
+         x="49.400146"
+         sodipodi:role="line">Ba138</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-5-6-6-2-8"
+       y="112.5658"
+       x="57.933952"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="112.5658"
+         x="57.933952"
+         id="tspan992-08-3-4-1-9-1-0"
+         sodipodi:role="line">-232 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-5-6-4"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.10819"
+         x="57.933952"
+         sodipodi:role="line">Ba136</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-5-6-8-7-7"
+       y="112.55556"
+       x="66.494881"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="112.55556"
+         x="66.494881"
+         id="tspan992-08-3-4-1-8-3-6"
+         sodipodi:role="line">-125.5 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-8-2-9"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.09795"
+         x="66.494881"
+         sodipodi:role="line">Ba134</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-5-6-2-0-4"
+       y="112.56491"
+       x="74.99556"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="112.56491"
+         x="74.99556"
+         id="tspan992-08-3-4-1-83-1-7"
+         sodipodi:role="line">-8 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-0-7-9"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.1073"
+         x="74.99556"
+         sodipodi:role="line">Ba132</tspan></text>
+    <text
+       transform="scale(1.0000092,0.9999908)"
+       id="text994-1-1-5-6-26-3-3"
+       y="112.56459"
+       x="83.544434"
+       style="font-style:normal;font-weight:normal;font-size:1.23391199px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       xml:space="preserve"><tspan
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="112.56459"
+         x="83.544434"
+         id="tspan992-08-3-4-1-7-0-9"
+         sodipodi:role="line">-94 MHz</tspan><tspan
+         id="tspan996-6-7-4-8-82-5-6"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458335"
+         y="114.10698"
+         x="83.544434"
+         sodipodi:role="line">Ba130</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29166651px;line-height:1.25;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3782244"
+       x="116.7553"
+       y="23.788874"
+       id="text1075-8-0"><tspan
+         sodipodi:role="line"
+         id="tspan1073-8-0"
+         x="116.7553"
+         y="23.788874"
+         style="font-size:5.29166651px;text-align:end;text-anchor:end;stroke-width:0.3782244">650nm EOM</tspan><tspan
+         sodipodi:role="line"
+         x="116.7553"
+         y="30.403458"
+         style="font-size:2.46944427px;text-align:end;text-anchor:end;stroke-width:0.3782244"
+         id="tspan1077-1-0">+300 MHz laser</tspan></text>
+    <g
+       transform="matrix(0.69954709,0,0,0.69953423,-25.245855,1.6480441)"
+       id="g2143-2"
+       style="display:inline;stroke-width:1.42950952">
+      <rect
+         style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2500-9-9-7-2"
+         width="18.852175"
+         height="13.096206"
+         x="108.61089"
+         y="22.55258"
+         ry="2.3627236" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+         x="117.9636"
+         y="27.829437"
+         id="text2513-8-9-1-4"><tspan
+           sodipodi:role="line"
+           id="tspan2511-2-2-2-3"
+           x="117.9636"
+           y="27.829437"
+           style="text-align:center;text-anchor:middle;stroke-width:0.37822437">LP Filter</tspan><tspan
+           sodipodi:role="line"
+           x="117.9636"
+           y="33.121105"
+           style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           id="tspan2517-3-8-1-2">SLP250+</tspan></text>
+    </g>
+    <g
+       transform="matrix(0.69954709,0,0,0.69953423,-25.414087,33.941094)"
+       id="g2143-2-1"
+       style="display:inline;stroke-width:1.42950952">
+      <rect
+         style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2500-9-9-7-2-5"
+         width="18.852175"
+         height="13.096206"
+         x="108.61089"
+         y="22.55258"
+         ry="2.3627236" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+         x="117.9636"
+         y="27.829437"
+         id="text2513-8-9-1-4-0"><tspan
+           sodipodi:role="line"
+           id="tspan2511-2-2-2-3-3"
+           x="117.9636"
+           y="27.829437"
+           style="text-align:center;text-anchor:middle;stroke-width:0.37822437">LP Filter</tspan><tspan
+           sodipodi:role="line"
+           x="117.9636"
+           y="33.121105"
+           style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           id="tspan2517-3-8-1-2-8">SLP250+</tspan></text>
+    </g>
+    <g
+       transform="matrix(0.69954709,0,0,0.69953423,-25.414087,44.160672)"
+       id="g2143-2-1-2"
+       style="display:inline;stroke-width:1.42950952">
+      <rect
+         style="opacity:1;fill:#d9dbef;fill-opacity:1;stroke:#5647a1;stroke-width:0.37882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2500-9-9-7-2-5-4"
+         width="18.852175"
+         height="13.096206"
+         x="108.61089"
+         y="22.55258"
+         ry="2.3627236" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37822437"
+         x="117.9636"
+         y="27.829437"
+         id="text2513-8-9-1-4-0-1"><tspan
+           sodipodi:role="line"
+           id="tspan2511-2-2-2-3-3-7"
+           x="117.9636"
+           y="27.829437"
+           style="text-align:center;text-anchor:middle;stroke-width:0.37822437">LP Filter</tspan><tspan
+           sodipodi:role="line"
+           x="117.9636"
+           y="33.121105"
+           style="font-size:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.37822437"
+           id="tspan2517-3-8-1-2-8-9">SLP450+</tspan></text>
     </g>
   </g>
 </svg>
